@@ -5,3 +5,15 @@ export interface IFoodItem {
   image: string;
   description: string;
 }
+
+export interface IFoodHistory {
+  id: number;
+  name: string;
+  date: Date;
+  status: string;
+  items: {
+    name: string;
+    pieces: string;
+    category: string;
+  }[];
+}
