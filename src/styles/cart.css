@@ -1,0 +1,11 @@
+.empty-cart-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.empty-cart-display img {
+  bottom: 2rem;
+  left: -4rem;
+  width: 15rem;
+}

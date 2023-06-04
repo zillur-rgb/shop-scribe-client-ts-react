@@ -5,7 +5,7 @@ import ShoppingStats from "../shopping-stats/ShoppingStats";
 
 function MainContent() {
   return (
-    <div className="app_main-content">
+    <div className="app__main-content">
       <Routes>
         <Route path="/" element={<ShoppingItem />} />
         <Route path="/history" element={<ShoppingHistory />} />

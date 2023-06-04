@@ -1,6 +1,12 @@
 import "../../styles/main.css";
+import Cart from "../cart/Cart";
 function RightSidebar() {
-  return <div className="app__main-sidebar">Right sidebar</div>;
+  let cartItem: any[] = [];
+  return (
+    <div className="app__main-sidebar">
+      <Cart cartItem={cartItem} />
+    </div>
+  );
 }
 
 export default RightSidebar;
