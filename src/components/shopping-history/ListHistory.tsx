@@ -3,11 +3,15 @@ import { FaChevronRight } from "react-icons/fa";
 import { format } from "date-fns";
 import foodHistory from "../../utils/constant/foodHistory";
 import groceryByMonth from "../../utils/helpers/groceryByMonth";
-const ListHistory = ({ handleGroceryDetails }: any) => {
+const ListHistory = ({
+  handleGroceryDetail,
+}: {
+  handleGroceryDetail: ({ grocery }: any) => void;
+}) => {
   const { formattedGrocery, sortedTimeline } = groceryByMonth(foodHistory);
 
   const setGrocery = (grocery: any) => {
-    handleGroceryDetails({ grocery });
+    handleGroceryDetail({ grocery });
   };
   return (
     <>
@@ -32,7 +36,10 @@ const ListHistory = ({ handleGroceryDetails }: any) => {
                 <button className={`btn ${gItem.status}`}>
                   {gItem.status}
                 </button>
-                <FaChevronRight className="forward-icon" />
+                <FaChevronRight
+                  onClick={(_e: any) => setGrocery(gItem)}
+                  className="forward-icon"
+                />
               </div>
             </article>
           ))}

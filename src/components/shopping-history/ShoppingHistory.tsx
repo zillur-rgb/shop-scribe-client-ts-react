@@ -1,8 +1,9 @@
 import useGlobalContext from "../../providers/AppProvider";
+import DetailHistory from "./DetailHistory";
 import ListHistory from "./ListHistory";
 
 const ShoppingHistory = () => {
-  const { showGroceryDetail, handleGroceryDetails } = useGlobalContext();
+  const { showGroceryDetail, handleGroceryDetail } = useGlobalContext();
 
   return (
     <div className="main__content-items">
@@ -12,9 +13,12 @@ const ShoppingHistory = () => {
 
       <div className="items-body">
         {!showGroceryDetail?.show ? (
-          <ListHistory handleGroceryDetails={handleGroceryDetails} />
+          <ListHistory handleGroceryDetail={handleGroceryDetail} />
         ) : (
-          <h1>Hello</h1>
+          <DetailHistory
+            handleGroceryDetail={handleGroceryDetail}
+            showGroceryDetail={showGroceryDetail}
+          />
         )}
       </div>
     </div>

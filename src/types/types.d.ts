@@ -11,9 +11,11 @@ export interface IFoodHistory {
   name: string;
   date: Date;
   status: string;
-  items: {
-    name: string;
-    pieces: string;
-    category: string;
-  }[];
+  items: IItems[];
+}
+
+export interface IItems {
+  name: string;
+  pieces: string;
+  category: string;
 }
