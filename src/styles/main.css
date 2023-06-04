@@ -12,6 +12,11 @@ main > div {
   height: 100vh;
 }
 
+.app__main-content,
+.app__main-items {
+  flex: 1;
+}
+
 .app__main-sidebar {
   background: var(--very-light-orange);
   width: 30vw;

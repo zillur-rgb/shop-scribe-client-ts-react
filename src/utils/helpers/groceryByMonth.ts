@@ -6,7 +6,7 @@ const groceryByMonth = (foodHistory: IFoodHistory[]) => {
   let sortedTimeline = foodHistory
     .slice() // Create a shallow copy of the array
     .sort((a, b) => compareDesc(a.date, b.date))
-    .map((item) => format(item.date, "LLLL YYYY"));
+    .map((item) => format(item.date, "LLLL yyyy"));
 
   sortedTimeline.filter(
     (item, index) => sortedTimeline.indexOf(item) === index
@@ -15,7 +15,7 @@ const groceryByMonth = (foodHistory: IFoodHistory[]) => {
   const formattedGrocery: Record<string, IFoodHistory[]> = {};
 
   foodHistory.forEach((item) => {
-    const timeline = format(item.date, "LLL yyyy");
+    const timeline = format(item.date, "LLLL yyyy");
 
     if (formattedGrocery.hasOwnProperty(timeline)) {
       formattedGrocery[timeline].push(item);
