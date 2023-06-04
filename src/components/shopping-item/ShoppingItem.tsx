@@ -1,5 +1,5 @@
 import { RxMagnifyingGlass, RxPlus } from "react-icons/rx";
-import { foodItems } from "../../utils/constant/foodItems";
+import foodItems from "../../utils/constant/foodItems";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { IFoodItem } from "../../types/types";
 
