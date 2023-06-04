@@ -1,14 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ShoppingItem from "../shopping-item/ShoppingItem";
+import ShoppingHistory from "../shopping-history/ShoppingHistory";
 
 function MainContent() {
   return (
     <div className="app_main-content">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ShoppingItem />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ShoppingItem />} />
+        <Route path="/history" element={<ShoppingHistory />} />
+        <Route path="/stats" />
+      </Routes>
     </div>
   );
 }

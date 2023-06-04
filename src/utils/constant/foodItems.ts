@@ -305,15 +305,6 @@ const foodItems: IFoodItem[] = [
     description:
       "There are many people who cannot say no to food items that are on the spicy side. There are even baked good devotees who are part of that classification. Spice lovers often chow down on ginger snaps.",
   },
-  {
-    id: 34,
-    name: "Doris Truffle",
-    category: "Cookies",
-    image:
-      "https://media.istockphoto.com/id/155150650/photo/group-of-truffles.jpg?s=1024x1024&w=is&k=20&c=vXOSNfJiJIxNtCZbP43lLz0Ey3EL7xm1E-yFEOsF7_Q=",
-    description:
-      "Doris Truffle is the classic biscuit for special occasions, which will conquer new hearts. The secret of the popularity Doris biscuits is in their delightful combination of soft truffle filling and crunchy cocoa biscuit. These adorable biscuits add flair to celebrations and brighten up your day.",
-  },
 ];
 
 export default foodItems;

@@ -1,0 +1,20 @@
+.app__sidebar {
+  padding: 2rem 0;
+}
+
+.navbar {
+  align-items: normal;
+  height: 100%;
+
+  padding: 0;
+}
+
+.app__sidebar-cart {
+  position: relative;
+}
+
+.item-num {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}

@@ -2,12 +2,14 @@ import logo from "../../assets/logo.svg";
 import { RiListUnordered, RiShoppingCart2Line } from "react-icons/ri";
 import { GiBackwardTime } from "react-icons/gi";
 import { AiOutlineBarChart } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import "../../styles/navbar.css";
 
 const Navbar = () => {
   return (
     <div className="app__sidebar">
-      <nav className="navbar vh-100 align-items-auto">
-        <div className="container-fluid d-flex flex-column justify-content-between align-items-center h-100">
+      <nav className="navbar">
+        <div className="container-fluid d-flex flex-column justify-content-between align-items-center">
           {/* logo goes here */}
 
           <div className="app__sidebar-logo">
@@ -18,21 +20,27 @@ const Navbar = () => {
           {/* Nav items go here */}
           <div className="app__sidebar-nav">
             <div className="nav-item list-items">
-              <RiListUnordered />
+              <Link to="/">
+                <RiListUnordered />
+              </Link>
             </div>
 
             <div className="nav-item history-items">
-              <GiBackwardTime />
+              <Link to="/history">
+                <GiBackwardTime />
+              </Link>
             </div>
 
             <div className="nav-item stats-items">
-              <AiOutlineBarChart />
+              <Link to={"/stats"}>
+                <AiOutlineBarChart />
+              </Link>
             </div>
           </div>
 
           {/* cart items go here */}
-          <div className="app__sidebar-cart position-relative">
-            <div className="item-num position-absolute">4</div>
+          <div className="app__sidebar-cart">
+            <p className="item-num ">4</p>
             <RiShoppingCart2Line className="cart-icon" />
           </div>
         </div>
