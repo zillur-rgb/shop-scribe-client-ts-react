@@ -1,11 +1,9 @@
-import { format } from "date-fns";
-import foodHistory from "../../utils/constant/foodHistory";
-import groceryByMonth from "../../utils/helpers/groceryByMonth";
-import { BsCalendarRange } from "react-icons/bs";
-import { FaChevronRight } from "react-icons/fa";
+import useGlobalContext from "../../providers/AppProvider";
+import ListHistory from "./ListHistory";
 
 const ShoppingHistory = () => {
-  const { formattedGrocery, sortedTimeline } = groceryByMonth(foodHistory);
+  const { showGroceryDetail, handleGroceryDetails } = useGlobalContext();
+
   return (
     <div className="main__content-items">
       <div className="items-header">
@@ -13,33 +11,11 @@ const ShoppingHistory = () => {
       </div>
 
       <div className="items-body">
-        {sortedTimeline.map((item, index) => (
-          <div key={index} className="items-month">
-            <p>{item}</p>
-
-            {formattedGrocery[item].map((gItem) => (
-              <article
-                className="card flex-row justify-content-between"
-                key={gItem.id}
-              >
-                <h2>{gItem.name}</h2>
-
-                <div className="d-flex align-items-center">
-                  <BsCalendarRange className="calendar-icon" />
-
-                  <span className="item-date">
-                    {format(gItem.date, "EEE d.M.yyy")}
-                  </span>
-
-                  <button className={`btn ${gItem.status}`}>
-                    {gItem.status}
-                  </button>
-                  <FaChevronRight className="forward-icon" />
-                </div>
-              </article>
-            ))}
-          </div>
-        ))}
+        {!showGroceryDetail?.show ? (
+          <ListHistory handleGroceryDetails={handleGroceryDetails} />
+        ) : (
+          <h1>Hello</h1>
+        )}
       </div>
     </div>
   );
