@@ -1,0 +1,18 @@
+main {
+  flex: 1;
+}
+
+main > div {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.app__main-content,
+.app__main-sidebar {
+  height: 100vh;
+}
+
+.app__main-sidebar {
+  background: var(--very-light-orange);
+  width: 30vw;
+}

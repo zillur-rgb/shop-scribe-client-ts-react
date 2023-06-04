@@ -3,7 +3,7 @@ import { RiListUnordered, RiShoppingCart2Line } from "react-icons/ri";
 import { GiBackwardTime } from "react-icons/gi";
 import { AiOutlineBarChart } from "react-icons/ai";
 
-const Sidebar = () => {
+const Navbar = () => {
   return (
     <div className="app__sidebar">
       <nav className="navbar vh-100 align-items-auto">
@@ -41,4 +41,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Navbar;
