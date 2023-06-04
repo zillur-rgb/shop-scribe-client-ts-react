@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ShoppingItem from "../shopping-item/ShoppingItem";
 import ShoppingHistory from "../shopping-history/ShoppingHistory";
+import ShoppingStats from "../shopping-stats/ShoppingStats";
 
 function MainContent() {
   return (
@@ -8,7 +9,7 @@ function MainContent() {
       <Routes>
         <Route path="/" element={<ShoppingItem />} />
         <Route path="/history" element={<ShoppingHistory />} />
-        <Route path="/stats" />
+        <Route path="/stats" element={<ShoppingStats />} />
       </Routes>
     </div>
   );

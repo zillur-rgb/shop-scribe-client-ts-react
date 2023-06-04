@@ -16,6 +16,6 @@ export interface IFoodHistory {
 
 export interface IItems {
   name: string;
-  pieces: string;
+  pieces: string | number;
   category: string;
 }
