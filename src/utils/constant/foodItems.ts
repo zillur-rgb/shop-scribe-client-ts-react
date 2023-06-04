@@ -1,6 +1,6 @@
 import { IFoodItem } from "../../types/types";
 
-const foodItems: IFoodItem[] = [
+export const foodItems: IFoodItem[] = [
   {
     id: 1,
     name: "Avocado",
