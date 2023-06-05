@@ -2,13 +2,12 @@ import cart from "../../assets/undraw_shopping_app_flsj 1.svg";
 import bottle from "../../assets/source.svg";
 import SearchForm from "../search/SearchForm";
 import "../../styles/cart.css";
+import useGlobalContext from "../../providers/AppProvider";
+import CartItmes from "./CartItmes";
 
-interface Props {
-  cartItem?: any;
-}
-
-const Cart = ({ cartItem }: Props) => {
-  const emptyCart = cartItem && cartItem.length === 0;
+const Cart = () => {
+  const { state } = useGlobalContext();
+  const emptyCart = state?.cart?.items?.length === 0;
   return (
     <section className="main__sidebar-cart h-100">
       <div className="cart d-flex flex-column align-items-center h-100">
@@ -28,10 +27,10 @@ const Cart = ({ cartItem }: Props) => {
             <img src={cart} alt="cart" className="position-absolute" />
           </div>
         ) : (
-          <h1>NANA</h1>
+          <CartItmes state={state} />
         )}
 
-        <div className="cart-footer">
+        <div className="cart-footer mt-auto">
           <SearchForm empty={emptyCart} />
         </div>
       </div>

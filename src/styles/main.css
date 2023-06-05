@@ -8,12 +8,24 @@ main > div {
 }
 
 .app__main-content,
+.app__main-items,
+.app__main-stats,
 .app__main-sidebar {
   height: 100vh;
+  overflow: scroll;
+}
+
+/* hide scroll bar for elements  */
+.app__main-content::-webkit-scrollbar,
+.app__main-items::-webkit-scrollbar,
+.app__main-stats::-webkit-scrollbar,
+.app__main-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .app__main-content,
-.app__main-items {
+.app__main-items,
+.app__main-stats {
   flex: 1;
 }
 

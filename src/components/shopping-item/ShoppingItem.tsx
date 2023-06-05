@@ -6,6 +6,7 @@ import useGlobalContext from "../../providers/AppProvider";
 const ShoppingItem = () => {
   const {
     state: { foodItems },
+    addItemToCart,
   } = useGlobalContext();
   let itemToShow = itemCategory({ foodItems });
   return (
@@ -46,7 +47,10 @@ const ShoppingItem = () => {
                     <div className="card flex-row align-items-center justify-content-between">
                       <p>{item.name}</p>
                       <p>
-                        <RxPlus className="plus-icon" />
+                        <RxPlus
+                          onClick={(_e: any) => addItemToCart(item)}
+                          className="plus-icon"
+                        />
                       </p>
                     </div>
                   </div>

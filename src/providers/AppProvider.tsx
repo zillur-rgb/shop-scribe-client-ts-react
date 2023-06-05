@@ -66,7 +66,7 @@ const AppProvider = ({ children }: Props) => {
       let oldDate = new Date(oldState.cart.date);
 
       if (oldState && expiredDate({ oldDate, currentDate })) {
-        // if cart is 24 hrs old date not match
+        // if cart is 24 hrs old date not tch
         // empty cart to shopping history and update local storage
         dispatch({
           type: "EMPTY_CART",
@@ -84,11 +84,13 @@ const AppProvider = ({ children }: Props) => {
   }, []);
 
   const addItemToCart = (item: any) => {
-    // add item id to cart
+    // add item id to cart and update local storage
     dispatch({
       type: "ADD_CART_ITEM",
       payload: item,
     });
+
+    console.log("payload", payload);
   };
 
   const [showGroceryDetail, setShowGroceryDetail] = useState({
@@ -112,9 +114,9 @@ const AppProvider = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    // to check state changes on development
-    console.log(state);
-  }, [state]);
+    // updtae local storage every time cart item changes
+    updateLocalStorage(state);
+  }, [state.cart.items]);
 
   return (
     <AppContext.Provider
