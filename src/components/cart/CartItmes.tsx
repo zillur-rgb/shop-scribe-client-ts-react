@@ -1,4 +1,3 @@
-import { Key } from "react";
 import { ICart, IFoodItem } from "../../types/types";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { HiPencil } from "react-icons/hi";

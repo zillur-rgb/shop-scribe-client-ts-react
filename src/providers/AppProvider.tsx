@@ -44,6 +44,15 @@ const AppProvider = ({ children }: Props) => {
     });
   };
 
+  const addItemToCart = (item: IFoodItem) => {
+    // add item to cart and update local storage
+    dispatch({ type: "ADD_CART_ITEM", payload: item });
+  };
+
+  const updateItemQuantity = ({ id, qty }: { id: any; qty: number }) => {
+    dispatch({ type: "UPDATE_CART_QTY", payload: { id, qty } });
+  };
+
   useEffect(() => {
     // add shopping to local storage at start
     if (!localStorage.getItem("shoppingList")) {
@@ -77,34 +86,6 @@ const AppProvider = ({ children }: Props) => {
     }
   }, []);
 
-  const addItemToCart = (item: any) => {
-    // add item id to cart and update local storage
-    dispatch({
-      type: "ADD_CART_ITEM",
-      payload: item,
-    });
-  };
-
-  // const [showGroceryDetail, setShowGroceryDetail] = useState({
-  //   show: false,
-  //   item: null,
-  // });
-
-  // const handleGroceryDetail = ({ grocery }: { grocery: IFoodItem | any }) => {
-  //   /**
-  //    * show details if grocery item is given
-  //    * @param obj {grocery: <value>}
-  //    */
-  //   if (!grocery) {
-  //     setShowGroceryDetail({
-  //       show: false,
-  //       item: null,
-  //     });
-  //   } else {
-  //     setShowGroceryDetail({ show: true, item: grocery });
-  //   }
-  // };
-
   useEffect(() => {
     // updtae local storage every time cart item changes
     updateLocalStorage(state);
@@ -115,6 +96,7 @@ const AppProvider = ({ children }: Props) => {
       value={{
         state,
         addItemToCart,
+        updateItemQuantity,
       }}
     >
       {children}

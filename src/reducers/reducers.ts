@@ -1,5 +1,3 @@
-import { ICart, IFoodHistory, IFoodItem } from "../types/types";
-
 const reducer = (
   state: any,
   // action: {
@@ -52,6 +50,26 @@ const reducer = (
       const newCart = { ...state.cart, items: [...cartItems, newItem] };
       return { ...state, cart: newCart };
     }
+  }
+
+  if (type === "UPDATE_CART_QTY") {
+    const { id, qty } = payload;
+
+    let oldCart = state.cart;
+    const itemToUpdate = oldCart.items.filter(
+      (item: { id: any }) => item.id === id
+    )[0];
+
+    const restItems = oldCart.items.filter(
+      (item: { id: any }) => item.id !== id
+    );
+
+    itemToUpdate.pieces = qty;
+
+    return {
+      ...state,
+      cart: { ...oldCart, items: [...restItems, itemToUpdate] },
+    };
   }
 
   return state;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IFoodItem } from "../../types/types";
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import useGlobalContext from "../../providers/AppProvider";
 
 type Props = {
   item: IFoodItem;
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const CartItemControl = ({ item, qtys }: Props) => {
+  const { updateItemQuantity } = useGlobalContext();
   const [showQtyControl, setShowQtyControl] = useState<boolean>(false);
 
   const handleQtyControl = (show: boolean) => setShowQtyControl(!show);
@@ -20,10 +22,26 @@ const CartItemControl = ({ item, qtys }: Props) => {
           <div>
             <AiOutlineDelete className="delete-icon" />
           </div>
-          <AiOutlineMinus />
+          <AiOutlineMinus
+            onClick={(_e: any) => {
+              if (Number(qty) > 1) {
+                updateItemQuantity({
+                  id: item.id,
+                  qty: Number(qty) - 1,
+                });
+              }
+            }}
+          />
 
           <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />
-          <AiOutlinePlus />
+          <AiOutlinePlus
+            onClick={(_e: any) => {
+              updateItemQuantity({
+                id: item.id,
+                qty: Number(qty) + 1,
+              });
+            }}
+          />
         </div>
       ) : (
         <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />
