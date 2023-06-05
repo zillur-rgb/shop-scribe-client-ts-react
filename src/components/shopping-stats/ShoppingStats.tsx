@@ -10,12 +10,15 @@ import {
 import foodHistory from "../../utils/constant/foodHistory";
 import { getTopItemAndCategory } from "../../utils/helpers/getTopItem";
 import { formatMonthlyData } from "../../utils/helpers/formatMonthylData";
+import useGlobalContext from "../../providers/AppProvider";
 
 const ShoppingStats = () => {
+  const {
+    state: { foodHistory },
+  } = useGlobalContext();
+
   const { items, categories, topItems, topCategories, totalItem } =
     getTopItemAndCategory(foodHistory);
-
-  console.log(topItems, topCategories, totalItem);
 
   const getPercent = (count: number, total: number) =>
     Math.floor((count / total) * 100);
@@ -25,13 +28,13 @@ const ShoppingStats = () => {
     {
       title: "Top Items",
       items: items,
-      top: topItems,
+      top3: topItems,
       customClass: "top-items",
     },
     {
       title: "Top Categories",
       items: categories,
-      top: topCategories,
+      top3: topCategories,
       customClass: "top-cat",
     },
   ];
@@ -42,13 +45,13 @@ const ShoppingStats = () => {
       <div className="container">
         <div className="row">
           {itemsAndCategories.map((data) => {
-            const { title, items, top, customClass } = data;
+            const { title, items, top3, customClass } = data;
             return (
               <article className={`col-sm-6 ${customClass}`} key={title}>
                 <h2>{title}</h2>
 
                 <ul>
-                  {top.map((item) => {
+                  {top3.map((item) => {
                     let percent = getPercent(items[item], totalItem);
                     return (
                       <li key={item} className="d-flex justify-content-between">

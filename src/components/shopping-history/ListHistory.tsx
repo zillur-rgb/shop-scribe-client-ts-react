@@ -1,16 +1,19 @@
 import { BsCalendarRange } from "react-icons/bs";
 import { FaChevronRight } from "react-icons/fa";
 import { format } from "date-fns";
-import foodHistory from "../../utils/constant/foodHistory";
 import groceryByMonth from "../../utils/helpers/groceryByMonth";
-const ListHistory = ({
-  handleGroceryDetail,
-}: {
-  handleGroceryDetail: ({ grocery }: any) => void;
-}) => {
+import useGlobalContext from "../../providers/AppProvider";
+import { IFoodHistory } from "../../types/types";
+const ListHistory = () => {
+  const {
+    state: { foodHistory },
+    handleGroceryDetail,
+  } = useGlobalContext();
+
   const { formattedGrocery, sortedTimeline } = groceryByMonth(foodHistory);
 
-  const setGrocery = (grocery: any) => {
+  const setGrocery = (grocery: IFoodHistory) => {
+    // calls handleGroceryDetail function and pass the grocery item
     handleGroceryDetail({ grocery });
   };
   return (

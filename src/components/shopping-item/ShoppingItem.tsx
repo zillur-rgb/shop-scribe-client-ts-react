@@ -1,11 +1,13 @@
 import { RxMagnifyingGlass, RxPlus } from "react-icons/rx";
-import foodItems from "../../utils/constant/foodItems";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { IFoodItem } from "../../types/types";
-
-let itemToShow = itemCategory({ foodItems });
+import useGlobalContext from "../../providers/AppProvider";
 
 const ShoppingItem = () => {
+  const {
+    state: { foodItems },
+  } = useGlobalContext();
+  let itemToShow = itemCategory({ foodItems });
   return (
     <div className="main__content-items">
       <div className="items-header d-flex">

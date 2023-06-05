@@ -3,6 +3,7 @@ import { CgArrowLongLeft } from "react-icons/cg";
 import { BsCalendarRange } from "react-icons/bs";
 import { format } from "date-fns";
 import { IItems } from "../../types/types";
+import useGlobalContext from "../../providers/AppProvider";
 
 interface Props {
   handleGroceryDetail: (grocery: any) => void;
@@ -11,7 +12,8 @@ interface Props {
     item: any;
   };
 }
-const DetailHistory = ({ handleGroceryDetail, showGroceryDetail }: Props) => {
+const DetailHistory = () => {
+  const { showGroceryDetail, handleGroceryDetail } = useGlobalContext();
   const { item } = showGroceryDetail;
   const itemToShow = itemCategory({
     foodItems: item?.items,
