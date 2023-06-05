@@ -2,7 +2,7 @@ export interface IFoodItem {
   id: number;
   name: string;
   category: string;
-  image: string;
+  image?: string;
   description: string;
 }
 
@@ -26,4 +26,12 @@ export interface ICart {
   date: Date;
   status: string;
   items: any[];
+}
+
+export interface IGroceryDetail {
+  id: number | null;
+  name: string | null;
+  date: Date | null;
+  status: string | null;
+  items: IFoodItem[] | null;
 }

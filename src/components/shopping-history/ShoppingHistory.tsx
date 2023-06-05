@@ -1,9 +1,32 @@
-import useGlobalContext from "../../providers/AppProvider";
+import { useState } from "react";
 import DetailHistory from "./DetailHistory";
 import ListHistory from "./ListHistory";
+import { IGroceryDetail } from "../../types/types";
 
 const ShoppingHistory = () => {
-  const { showGroceryDetail } = useGlobalContext();
+  const [showGroceryDetail, setShowGroceryDetail] = useState<{
+    show: boolean;
+    item: IGroceryDetail | null;
+  }>({
+    show: false,
+    item: null,
+  });
+
+  const handleGroceryDetail = ({ grocery }: { grocery: IGroceryDetail }) => {
+    /**
+     * show details if grocery item is given
+     * @param object {grocery: <value>}
+     */
+
+    if (!grocery) {
+      setShowGroceryDetail({ show: false, item: null });
+    } else {
+      setShowGroceryDetail({
+        show: true,
+        item: grocery,
+      });
+    }
+  };
 
   return (
     <div className="main__content-items">
@@ -12,7 +35,11 @@ const ShoppingHistory = () => {
       </div>
 
       <div className="items-body">
-        {!showGroceryDetail?.show ? <ListHistory /> : <DetailHistory />}
+        {!showGroceryDetail?.show ? (
+          <ListHistory handleGroceryDetail={handleGroceryDetail} />
+        ) : (
+          <DetailHistory {...{ showGroceryDetail, handleGroceryDetail }} />
+        )}
       </div>
     </div>
   );

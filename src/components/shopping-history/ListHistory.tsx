@@ -4,10 +4,14 @@ import { format } from "date-fns";
 import groceryByMonth from "../../utils/helpers/groceryByMonth";
 import useGlobalContext from "../../providers/AppProvider";
 import { IFoodHistory } from "../../types/types";
-const ListHistory = () => {
+
+interface Props {
+  handleGroceryDetail: any;
+}
+
+const ListHistory = ({ handleGroceryDetail }: Props) => {
   const {
     state: { foodHistory },
-    handleGroceryDetail,
   } = useGlobalContext();
 
   const { formattedGrocery, sortedTimeline } = groceryByMonth(foodHistory);
@@ -33,7 +37,7 @@ const ListHistory = () => {
                 <BsCalendarRange className="calendar-icon" />
 
                 <span className="item-date">
-                  {format(gItem.date, "EEE d.M.yyy")}
+                  {format(new Date(gItem.date), "EEE d.M.yyy")}
                 </span>
 
                 <button className={`btn ${gItem.status}`}>

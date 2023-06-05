@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { ICart, IFoodHistory, IFoodItem } from "../types/types";
 import foodItems from "../utils/constant/foodItems";
 import foodHistory from "../utils/constant/foodHistory";
@@ -89,29 +83,27 @@ const AppProvider = ({ children }: Props) => {
       type: "ADD_CART_ITEM",
       payload: item,
     });
-
-    console.log("payload", payload);
   };
 
-  const [showGroceryDetail, setShowGroceryDetail] = useState({
-    show: false,
-    item: null,
-  });
+  // const [showGroceryDetail, setShowGroceryDetail] = useState({
+  //   show: false,
+  //   item: null,
+  // });
 
-  const handleGroceryDetail = ({ grocery }: { grocery: IFoodItem | any }) => {
-    /**
-     * show details if grocery item is given
-     * @param obj {grocery: <value>}
-     */
-    if (!grocery) {
-      setShowGroceryDetail({
-        show: false,
-        item: null,
-      });
-    } else {
-      setShowGroceryDetail({ show: true, item: grocery });
-    }
-  };
+  // const handleGroceryDetail = ({ grocery }: { grocery: IFoodItem | any }) => {
+  //   /**
+  //    * show details if grocery item is given
+  //    * @param obj {grocery: <value>}
+  //    */
+  //   if (!grocery) {
+  //     setShowGroceryDetail({
+  //       show: false,
+  //       item: null,
+  //     });
+  //   } else {
+  //     setShowGroceryDetail({ show: true, item: grocery });
+  //   }
+  // };
 
   useEffect(() => {
     // updtae local storage every time cart item changes
@@ -121,8 +113,6 @@ const AppProvider = ({ children }: Props) => {
   return (
     <AppContext.Provider
       value={{
-        showGroceryDetail,
-        handleGroceryDetail,
         state,
         addItemToCart,
       }}

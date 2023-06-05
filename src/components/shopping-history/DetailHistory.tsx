@@ -3,10 +3,14 @@ import { CgArrowLongLeft } from "react-icons/cg";
 import { BsCalendarRange } from "react-icons/bs";
 import { format } from "date-fns";
 import { IItems } from "../../types/types";
-import useGlobalContext from "../../providers/AppProvider";
 
-const DetailHistory = () => {
-  const { showGroceryDetail, handleGroceryDetail } = useGlobalContext();
+interface Props {
+  showGroceryDetail: any;
+  handleGroceryDetail: any;
+}
+
+const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }: Props) => {
+  // const { showGroceryDetail, handleGroceryDetail } = useGlobalContext();
   const { item } = showGroceryDetail;
   const itemToShow = itemCategory({
     foodItems: item?.items,
@@ -29,7 +33,7 @@ const DetailHistory = () => {
             <BsCalendarRange className="calendar-icon" />
 
             <span className="grocery-date">
-              {format(item.date, "EEE d.M.yyy")}
+              {format(new Date(item.date), "EEE d.M.yyy")}
             </span>
           </div>
 
