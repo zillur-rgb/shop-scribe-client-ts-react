@@ -1,4 +1,4 @@
-import { IFoodHistory, IFoodItem } from "../types/types";
+import { ICart, IFoodHistory, IFoodItem } from "../types/types";
 
 const reducer = (
   state: any,
@@ -7,7 +7,7 @@ const reducer = (
     payload: {
       foodItems: IFoodItem[];
       foodHistory: IFoodHistory[];
-      cart: any[];
+      cart: ICart;
     };
   }
 ) => {

@@ -5,13 +5,6 @@ import { format } from "date-fns";
 import { IItems } from "../../types/types";
 import useGlobalContext from "../../providers/AppProvider";
 
-interface Props {
-  handleGroceryDetail: (grocery: any) => void;
-  showGroceryDetail: {
-    show: boolean;
-    item: any;
-  };
-}
 const DetailHistory = () => {
   const { showGroceryDetail, handleGroceryDetail } = useGlobalContext();
   const { item } = showGroceryDetail;

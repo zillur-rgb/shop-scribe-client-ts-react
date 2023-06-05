@@ -19,3 +19,11 @@ export interface IItems {
   pieces: string | number;
   category: string;
 }
+
+export interface ICart {
+  id: number;
+  name: string;
+  date: Date;
+  status: string;
+  items: any[];
+}

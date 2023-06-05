@@ -4,11 +4,11 @@ import SearchForm from "../search/SearchForm";
 import "../../styles/cart.css";
 
 interface Props {
-  cartItem: any;
+  cartItem?: any;
 }
 
 const Cart = ({ cartItem }: Props) => {
-  const emptyCart = cartItem.length === 0;
+  const emptyCart = cartItem && cartItem.length === 0;
   return (
     <section className="main__sidebar-cart h-100">
       <div className="cart d-flex flex-column align-items-center h-100">

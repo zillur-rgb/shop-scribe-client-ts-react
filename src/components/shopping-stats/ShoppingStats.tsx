@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import foodHistory from "../../utils/constant/foodHistory";
 import { getTopItemAndCategory } from "../../utils/helpers/getTopItem";
 import { formatMonthlyData } from "../../utils/helpers/formatMonthylData";
 import useGlobalContext from "../../providers/AppProvider";
