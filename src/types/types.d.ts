@@ -29,9 +29,9 @@ export interface ICart {
 }
 
 export interface IGroceryDetail {
-  id: number | null;
-  name: string | null;
-  date: Date | null;
-  status: string | null;
-  items: IFoodItem[] | null;
+  id: number;
+  name: string;
+  date: Date;
+  status: string;
+  items: IFoodItem[];
 }

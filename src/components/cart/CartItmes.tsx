@@ -2,6 +2,7 @@ import { Key } from "react";
 import { ICart, IFoodItem } from "../../types/types";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { HiPencil } from "react-icons/hi";
+import CartItemControl from "./CartItemControl";
 
 interface Props {
   state: {
@@ -20,6 +21,17 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
     );
     return cartItemToShow;
   };
+
+  const mapItemToQty = () => {
+    // return object of items with id as key and quantity as value
+    const cartItemQtys: any = {};
+    for (let item of cart.items) {
+      cartItemQtys[item.id] = item.pieces;
+    }
+    return cartItemQtys;
+  };
+
+  const cartItemQtys = mapItemToQty();
 
   let cartItemsToShow = getCartItem();
 
@@ -42,18 +54,13 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
         {allCategories.map((category) => (
           <div key={category}>
             <p className="cart__items-category">{category}</p>
-            <div className="d-flex align-items-stretch">
-              {cartItemsByCategory[category].map(
-                (item: { id: Key | null | undefined; name: string }) => (
-                  <article
-                    className="d-flex flex-column align-items-center"
-                    key={item.id}
-                  >
-                    <h3>{item.name}</h3>
-                    <button className="ms-auto">Control</button>
-                  </article>
-                )
-              )}
+            <div className="d-flex flex-column align-items-stretch">
+              {cartItemsByCategory[category].map((item: IFoodItem) => (
+                <article className="d-flex align-items-center" key={item.id}>
+                  <h3>{item.name}</h3>
+                  <CartItemControl item={item} qtys={cartItemQtys} />
+                </article>
+              ))}
             </div>
           </div>
         ))}
