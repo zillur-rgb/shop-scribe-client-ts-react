@@ -1,0 +1,44 @@
+/* shopping items  */
+h1 {
+  width: 70%;
+  margin-bottom: 1rem;
+}
+
+h1 span {
+  color: var(--bright-yellow);
+  font-weight: 700;
+}
+
+/* items  */
+.items-show h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  color: var(--black);
+}
+
+.card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--white);
+}
+
+.card p {
+  color: var(--black);
+  cursor: pointer;
+}
+
+.card .plus-icon {
+  width: 1.5rem;
+  margin-left: 0.5rem;
+  max-width: none;
+
+  color: var(--light-gray);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.card .plus-icon:hover {
+  color: var(--light-black);
+  scale: 1.02;
+}

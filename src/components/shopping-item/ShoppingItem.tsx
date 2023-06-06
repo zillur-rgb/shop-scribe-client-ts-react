@@ -3,6 +3,7 @@ import itemCategory from "../../utils/helpers/itemByCategory";
 import { IFoodItem } from "../../types/types";
 import useGlobalContext from "../../providers/AppProvider";
 import { useState } from "react";
+import "../../styles/shopping-item.css";
 
 const ShoppingItem = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -55,7 +56,7 @@ const ShoppingItem = () => {
                     item.name.toLowerCase().match(searchTerm.toLowerCase())
                   ) {
                     return (
-                      <div key={item.id} className="col-lg-3 col-md-4 col-6">
+                      <div key={item.id} className="col-lg-3 col-6">
                         {/* food product */}
                         <div className="card flex-row align-items-center justify-content-between">
                           <p
