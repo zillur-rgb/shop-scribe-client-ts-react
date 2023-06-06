@@ -5,11 +5,54 @@ import { AiOutlineBarChart } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/navbar.css";
 import useGlobalContext from "../../providers/AppProvider";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { state } = useGlobalContext();
   const location = useLocation();
   const path = location.pathname;
+
+  // on small screen change main sidebar display setting
+  const handleMainSidebar = () => {
+    const width = window.innerWidth;
+
+    if (width <= 960) {
+      const mainRightSidebar = document.querySelector(
+        ".app__main-sidebar"
+      ) as HTMLElement;
+
+      if (mainRightSidebar !== null) {
+        const displayStyle = window.getComputedStyle(
+          mainRightSidebar,
+          null
+        ).display;
+
+        if (displayStyle === "none") {
+          mainRightSidebar.style.display = "block";
+        } else {
+          mainRightSidebar.style.display = "none";
+        }
+      }
+    }
+  };
+
+  // show main right side bar on big screen
+  const resetRightSidebar = () => {
+    if (window.innerWidth > 960) {
+      const mainRightSidebar = document.querySelector(
+        ".app__main-sidebar"
+      ) as HTMLElement;
+
+      if (mainRightSidebar !== null) {
+        mainRightSidebar.style.display = "block";
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", resetRightSidebar);
+    return () => window.removeEventListener("resize", resetRightSidebar);
+  });
 
   return (
     <div className="app__sidebar">
@@ -42,7 +85,7 @@ const Navbar = () => {
           </div>
 
           {/* cart items go here */}
-          <div className="app__sidebar-cart">
+          <div className="app__sidebar-cart" onClick={handleMainSidebar}>
             <p className="item-num ">{state.cart.items.length}</p>
             <RiShoppingCart2Line className="cart-icon" />
           </div>

@@ -30,17 +30,29 @@ main > div {
 .app__main-sidebar {
   background: var(--very-light-orange);
   width: 30vw;
-  box-shadow: -1px 0 10px var(--very-light-orange);
+  box-shadow: -1px 0 5px var(--light-gray);
 }
 
 @media screen and (max-width: 60rem) {
   .app__main-sidebar {
     display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 350px;
   }
 }
 
 @media screen and (max-width: 43.75rem) {
   .app__main-content {
     padding: var(--padding-y) 1rem;
+  }
+}
+
+@media screen and (max-width: 26.25rem) {
+  .app__main-sidebar {
+    width: 300px;
   }
 }

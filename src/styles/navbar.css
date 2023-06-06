@@ -47,6 +47,13 @@
   border-radius: 50%;
   padding: 0.7rem;
   color: var(--white);
+
+  cursor: pointer;
+}
+
+.app__sidebar-cart:hover {
+  opacity: 0.99;
+  box-shadow: 0 0 2px var(--light-red);
 }
 
 .item-num {

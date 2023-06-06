@@ -105,7 +105,6 @@
   font-weight: 700;
 }
 
-/**************************/
 /* cart item control box  */
 .cart__item-control .btn {
   color: var(--bright-yellow);
@@ -204,4 +203,11 @@
 
 .cart-footer .btn-holder .btn:last-child:hover {
   box-shadow: 0 0 3px var(--light-gray);
+}
+
+@media screen and (max-width: 23.4375rem) {
+  .cart-padding {
+    padding: var(--padding-y) 1rem;
+    padding-bottom: 0;
+  }
 }
