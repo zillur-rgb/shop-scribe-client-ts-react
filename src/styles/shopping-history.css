@@ -1,0 +1,50 @@
+/* shopping history  */
+
+/* list view  */
+.items-month p:first-child {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.items-month .card {
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.items-month h2 {
+  cursor: pointer;
+}
+
+.items-month h2 + .d-flex {
+  color: var(--light-gray);
+}
+
+.items-month .btn {
+  border: 1px solid;
+  border-radius: 0.5rem;
+  cursor: auto;
+}
+
+.items-month .btn.completed {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.items-month .btn.cancelled {
+  color: var(--light-red);
+  border-color: var(--light-red);
+}
+
+.items-month .forward-icon {
+  color: var(--bright-yellow);
+  cursor: pointer;
+}
+
+.items-month .forward-icon:hover {
+  box-shadow: 0 0 2px var(--light-gray);
+}
+
+/* detail view  */

@@ -16,8 +16,8 @@ const ListHistory = ({ handleGroceryDetail }: Props) => {
 
   const { formattedGrocery, sortedTimeline } = groceryByMonth(foodHistory);
 
+  // calls handleGroceryDetail function and pass the grocery item
   const setGrocery = (grocery: IFoodHistory) => {
-    // calls handleGroceryDetail function and pass the grocery item
     handleGroceryDetail({ grocery });
   };
   return (
@@ -31,16 +31,22 @@ const ListHistory = ({ handleGroceryDetail }: Props) => {
               className="card flex-row justify-content-between"
               key={gItem.id}
             >
-              <h2 onClick={(_e) => setGrocery(gItem)}>{gItem.name}</h2>
+              <h2
+                onClick={(
+                  _e: React.MouseEvent<HTMLHeadingElement, MouseEvent>
+                ) => setGrocery(gItem)}
+              >
+                {gItem.name}
+              </h2>
 
               <div className="d-flex align-items-center">
-                <BsCalendarRange className="calendar-icon" />
+                <BsCalendarRange className="calendar-icon me-2" />
 
                 <span className="item-date">
                   {format(new Date(gItem.date), "EEE d.M.yyy")}
                 </span>
 
-                <button className={`btn ${gItem.status}`}>
+                <button className={`btn ${gItem.status} mx-4`}>
                   {gItem.status}
                 </button>
                 <FaChevronRight

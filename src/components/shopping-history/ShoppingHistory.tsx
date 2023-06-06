@@ -2,6 +2,7 @@ import { useState } from "react";
 import DetailHistory from "./DetailHistory";
 import ListHistory from "./ListHistory";
 import { IGroceryDetail } from "../../types/types";
+import "../../styles/shopping-history.css";
 
 const ShoppingHistory = () => {
   const [showGroceryDetail, setShowGroceryDetail] = useState<{
@@ -29,12 +30,12 @@ const ShoppingHistory = () => {
   };
 
   return (
-    <div className="main__content-items">
-      <div className="items-header">
+    <div className="main__content-history">
+      <div>
         <h1>Shopping history</h1>
       </div>
 
-      <div className="items-body">
+      <div className="main__history-view">
         {!showGroceryDetail?.show ? (
           <ListHistory handleGroceryDetail={handleGroceryDetail} />
         ) : (
