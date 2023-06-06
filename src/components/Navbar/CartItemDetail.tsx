@@ -7,7 +7,6 @@ type Props = {
 };
 
 const CartItemDetail = ({ item, setShowItemDetail }: Props) => {
-  const { name, id, category, image, description } = item;
   const handleItemDetail = () => {
     setShowItemDetail({
       show: false,
@@ -17,7 +16,7 @@ const CartItemDetail = ({ item, setShowItemDetail }: Props) => {
   return (
     <div className="main__sidebar-details">
       <BackButton function1={handleItemDetail} />
-      {name}
+      {item?.name}
     </div>
   );
 };

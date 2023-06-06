@@ -1,20 +1,13 @@
 import "../../styles/cart.css";
 import useGlobalContext from "../../providers/AppProvider";
-import { useState } from "react";
 import ViewCart from "./ViewCart";
+import SidebarItem from "../main/SidebarItem";
 
 const Cart = () => {
-  const [showAddItemForm, setShowAddItemForm] = useState(false);
-  const { showItemDetail, setShowItemDetail } = useGlobalContext();
+  const { showItemDetail, showAddItemForm } = useGlobalContext();
   return (
-    <section className="main__sidebar-cart h-100">
-      {showAddItemForm ? (
-        <form>form</form>
-      ) : showItemDetail.show ? (
-        <h1>Hello</h1>
-      ) : (
-        <ViewCart />
-      )}
+    <section className="h-100">
+      {showAddItemForm || showItemDetail.show ? <SidebarItem /> : <ViewCart />}
     </section>
   );
 };

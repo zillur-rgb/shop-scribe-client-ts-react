@@ -90,43 +90,46 @@ const CartItmes = ({
       </div>
 
       <div className="cart-items">
-        {allCategories.map((category) => (
-          <div key={category}>
+        {allCategories.map((category: string, idx: number) => (
+          <div key={idx}>
             <p className="cart__items-category">{category}</p>
             <div className="d-flex flex-column">
-              {cartItemsByCategory[category].map((item: IFoodItem) => (
-                <div className="d-flex align-items-center">
-                  {showEdit && (
-                    <div className="position-relative input-holder">
-                      <input
-                        type="checkbox"
-                        id={`done-${item.id}`}
-                        onChange={(_e: React.ChangeEvent<HTMLInputElement>) =>
-                          itemStatusUpdate(item.id, !cartItemStatus[item.id])
-                        }
-                        className="visually-hidden"
-                      />
-
-                      <span className="fake-input">
-                        <HiCheck
-                          className={`check-icon ${
-                            cartItemStatus[item.id] ? "d-block" : "d-none"
-                          }`}
+              {cartItemsByCategory[category].map(
+                (item: IFoodItem, idx: number) => (
+                  <div key={idx} className="d-flex align-items-center">
+                    {showEdit && (
+                      <div className="position-relative input-holder">
+                        <input
+                          type="checkbox"
+                          id={`done-${item.id}`}
+                          onChange={(_e: React.ChangeEvent<HTMLInputElement>) =>
+                            itemStatusUpdate(item.id, !cartItemStatus[item.id])
+                          }
+                          className="visually-hidden"
                         />
-                      </span>
-                    </div>
-                  )}
-                  <label
-                    htmlFor={`done-${item.id}`}
-                    className={`${
-                      cartItemStatus[item.id] && "text-decoration-line-through"
-                    }`}
-                  >
-                    {item.name}
-                  </label>
-                  <CartItemControl item={item} qtys={cartItemQtys} />
-                </div>
-              ))}
+
+                        <span className="fake-input">
+                          <HiCheck
+                            className={`check-icon ${
+                              cartItemStatus[item.id] ? "d-block" : "d-none"
+                            }`}
+                          />
+                        </span>
+                      </div>
+                    )}
+                    <label
+                      htmlFor={`done-${item.id}`}
+                      className={`${
+                        cartItemStatus[item.id] &&
+                        "text-decoration-line-through"
+                      }`}
+                    >
+                      {item.name}
+                    </label>
+                    <CartItemControl item={item} qtys={cartItemQtys} />
+                  </div>
+                )
+              )}
             </div>
           </div>
         ))}

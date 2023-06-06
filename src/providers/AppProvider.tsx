@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { ICart, IFoodHistory, IFoodItem } from "../types/types";
 import foodItems from "../utils/constant/foodItems";
 import foodHistory from "../utils/constant/foodHistory";
@@ -30,6 +36,11 @@ const AppContext = createContext<any>(null);
 
 const AppProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [showItemDetail, setShowItemDetail] = useState({
+    show: false,
+    item: null,
+  });
+  const [showAddItemForm, setShowAddItemForm] = useState(false);
 
   const updateLocalStorage = (state: {
     foodItems: IFoodItem[];
@@ -137,6 +148,10 @@ const AppProvider = ({ children }: Props) => {
         itemStatusUpdate,
         shoppingEnded,
         changeCartName,
+        showItemDetail,
+        setShowItemDetail,
+        showAddItemForm,
+        setShowAddItemForm,
       }}
     >
       {children}

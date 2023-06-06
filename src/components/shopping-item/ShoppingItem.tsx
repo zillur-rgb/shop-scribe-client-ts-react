@@ -7,6 +7,7 @@ const ShoppingItem = () => {
   const {
     state: { foodItems },
     addItemToCart,
+    setShowItemDetail,
   } = useGlobalContext();
   let itemToShow = itemCategory({ foodItems });
   return (
@@ -33,6 +34,7 @@ const ShoppingItem = () => {
           </div>
         </form>
       </div>
+
       <div className="items-show">
         {Object.keys(itemToShow).map((item: string) => (
           <div key={item}>
@@ -45,7 +47,16 @@ const ShoppingItem = () => {
                   <div key={item.id} className="col-lg-3 col-md-4 col-6">
                     {/* food product */}
                     <div className="card flex-row align-items-center justify-content-between">
-                      <p>{item.name}</p>
+                      <p
+                        onClick={() =>
+                          setShowItemDetail({
+                            show: true,
+                            item: item,
+                          })
+                        }
+                      >
+                        {item.name}
+                      </p>
                       <p>
                         <RxPlus
                           onClick={(_e: any) => addItemToCart(item)}
