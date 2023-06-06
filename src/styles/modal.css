@@ -5,26 +5,49 @@
   right: 0;
   z-index: 1000;
 
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .app__modal .position-relative {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   max-width: max-content;
+  width: 50%;
+  min-width: 300px;
   padding: 2rem;
+  border-radius: 1rem;
 }
 
 .app__modal .position-absolute {
   top: 2rem;
   right: 2rem;
+  cursor: pointer;
+}
+
+.app__modal .position-absolute:hover .close-icon {
+  scale: 1.05;
 }
 
 .app__modal h2 {
   width: 85%;
+  color: var(--light-black);
 }
 
 .app__modal .btn-holder {
   margin-left: auto;
+}
+
+.app__modal .btn {
+  padding: 0.5rem 1.5rem;
+}
+
+.app__modal .btn-holder .btn:last-child {
+  background-color: var(--light-red);
+  color: var(--white);
+}
+
+.app__modal .btn-holder .btn:last-child:hover {
+  opacity: 0.9;
 }

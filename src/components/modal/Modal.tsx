@@ -25,7 +25,10 @@ const Modal = () => {
           >
             cancel
           </button>
-          <button className="btn" onClick={() => shoppingEnded("cancelled")}>
+          <button
+            className="btn ms-3"
+            onClick={() => shoppingEnded("cancelled")}
+          >
             Yes
           </button>
         </div>
