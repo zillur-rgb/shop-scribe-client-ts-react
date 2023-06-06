@@ -2,12 +2,14 @@ import logo from "../../assets/logo.svg";
 import { RiListUnordered, RiShoppingCart2Line } from "react-icons/ri";
 import { GiBackwardTime } from "react-icons/gi";
 import { AiOutlineBarChart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../styles/navbar.css";
 import useGlobalContext from "../../providers/AppProvider";
 
 const Navbar = () => {
   const { state } = useGlobalContext();
+  const location = useLocation();
+  const path = location.pathname;
 
   return (
     <div className="app__sidebar">
@@ -22,23 +24,21 @@ const Navbar = () => {
           </div>
           {/* Nav items go here */}
           <div className="app__sidebar-nav">
-            <div className="nav-item list-items">
-              <Link to="/">
+            <Link to="/">
+              <div className={`nav-item ${path === "/" && "active"}`}>
                 <RiListUnordered />
-              </Link>
-            </div>
-
-            <div className="nav-item history-items">
-              <Link to="/history">
+              </div>
+            </Link>
+            <Link to="/history">
+              <div className={`nav-item ${path === "/history" && "active"}`}>
                 <GiBackwardTime />
-              </Link>
-            </div>
-
-            <div className="nav-item stats-items">
-              <Link to={"/stats"}>
+              </div>
+            </Link>
+            <Link to="/stat">
+              <div className={`nav-item ${path === "/stat" && "active"}`}>
                 <AiOutlineBarChart />
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
 
           {/* cart items go here */}

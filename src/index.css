@@ -60,6 +60,7 @@ h6 {
   --light-black: #34333a;
   /* right sidebar background  */
   --very-light-orange: #fff0de;
+  --padding-y: 2rem;
 }
 
 body {

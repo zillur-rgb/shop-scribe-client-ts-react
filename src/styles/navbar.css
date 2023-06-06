@@ -1,5 +1,7 @@
 .app__sidebar {
-  padding: 2rem 0;
+  padding: var(--padding-y) 0;
+  width: 5%;
+  min-width: 90px;
 }
 
 .navbar {
@@ -9,12 +11,51 @@
   padding: 0;
 }
 
+.navbar .container-fluid {
+  padding: 0;
+}
+
+/* sidebar nav  */
+.app__sidebar-nav {
+  width: 100%;
+}
+
+.app__sidebar-nav a {
+  color: var(--light-black);
+}
+
+.nav-item {
+  width: 100%;
+  margin: 3rem 0;
+  padding: 1rem;
+  border-left: 5px solid transparent;
+}
+
+.nav-item.active {
+  border-left: 5px solid var(--bright-yellow);
+}
+
+.nav-item svg {
+  margin: auto;
+}
+
+/* sidebar cart  */
 .app__sidebar-cart {
   position: relative;
+  background: var(--bright-yellow);
+
+  border-radius: 50%;
+  padding: 0.7rem;
+  color: var(--white);
 }
 
 .item-num {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -5px;
+  right: -5px;
+  padding: 1px 0.4rem;
+
+  font-size: 0.7rem;
+  background: var(--light-red);
+  border-radius: 5px;
 }
