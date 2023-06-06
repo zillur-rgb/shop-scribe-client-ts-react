@@ -100,15 +100,17 @@ const CartItmes = ({
                 (item: IFoodItem, idx: number) => (
                   <div
                     key={idx}
-                    className={`mb-3 d-flex align-items-center 
+                    className={`single-cart-item mb-3 d-flex align-items-center 
                   search-${
                     searchTerm &&
                     item.name.toLowerCase().match(searchTerm.toLowerCase()) &&
                     "match"
                   }`}
                   >
+                    {/* check box show only on edit mode  */}
                     {showEdit && (
                       <div className="position-relative input-holder me-3">
+                        {/* change single shopping item status  */}
                         <input
                           type="checkbox"
                           id={`done-${item.id}`}
@@ -117,7 +119,7 @@ const CartItmes = ({
                           }
                           className="visually-hidden"
                         />
-
+                        {/* custom checkbox  */}
                         <span className="fake-input">
                           <HiCheck
                             className={`check-icon ${
@@ -127,6 +129,7 @@ const CartItmes = ({
                         </span>
                       </div>
                     )}
+                    {/* cart item  */}
                     <label
                       htmlFor={`done-${item.id}`}
                       className={`${
@@ -136,6 +139,7 @@ const CartItmes = ({
                     >
                       {item.name}
                     </label>
+                    {/* control box for changing quantity and removing item  */}
                     <CartItemControl item={item} qtys={cartItemQtys} />
                   </div>
                 )

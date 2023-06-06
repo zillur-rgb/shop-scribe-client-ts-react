@@ -141,6 +141,27 @@
   scale: 1.1;
 }
 
+@media screen and (max-width: 420px) {
+  .single-cart-item {
+    flex-direction: column;
+  }
+
+  .single-cart-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cart__item-control {
+    margin: 0 !important;
+  }
+
+  .cart__items-category + div > div {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px var(--light-gray);
+    padding-bottom: 0.5rem;
+  }
+}
+
 /* cart footer  */
 .cart-footer {
   height: 15vh;
