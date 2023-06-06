@@ -2,8 +2,10 @@ import { RxMagnifyingGlass, RxPlus } from "react-icons/rx";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { IFoodItem } from "../../types/types";
 import useGlobalContext from "../../providers/AppProvider";
+import { useState } from "react";
 
 const ShoppingItem = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const {
     state: { foodItems },
     addItemToCart,
@@ -20,7 +22,7 @@ const ShoppingItem = () => {
 
         <form>
           <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">
+            <span className="input-group-text" id="search-icon">
               <RxMagnifyingGlass className="mag-icon" />
             </span>
 
@@ -29,7 +31,11 @@ const ShoppingItem = () => {
               className="form-control"
               placeholder="search item"
               aria-label="search item"
-              aria-describedby="basic-addon1"
+              aria-describedby="search-icon"
+              value={searchTerm}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchTerm(e.target.value)
+              }
             />
           </div>
         </form>
@@ -43,29 +49,38 @@ const ShoppingItem = () => {
 
             <div className="container">
               <div className="row">
-                {itemToShow[item].map((item: IFoodItem) => (
-                  <div key={item.id} className="col-lg-3 col-md-4 col-6">
-                    {/* food product */}
-                    <div className="card flex-row align-items-center justify-content-between">
-                      <p
-                        onClick={() =>
-                          setShowItemDetail({
-                            show: true,
-                            item: item,
-                          })
-                        }
-                      >
-                        {item.name}
-                      </p>
-                      <p>
-                        <RxPlus
-                          onClick={(_e: any) => addItemToCart(item)}
-                          className="plus-icon"
-                        />
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                {itemToShow[item].map((item: IFoodItem) => {
+                  if (
+                    !searchTerm ||
+                    item.name.toLowerCase().match(searchTerm.toLowerCase())
+                  ) {
+                    return (
+                      <div key={item.id} className="col-lg-3 col-md-4 col-6">
+                        {/* food product */}
+                        <div className="card flex-row align-items-center justify-content-between">
+                          <p
+                            onClick={() =>
+                              setShowItemDetail({
+                                show: true,
+                                item: item,
+                              })
+                            }
+                          >
+                            {item.name}
+                          </p>
+                          <p>
+                            <RxPlus
+                              onClick={(_e: any) => addItemToCart(item)}
+                              className="plus-icon"
+                            />
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>

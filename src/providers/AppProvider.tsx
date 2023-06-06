@@ -94,14 +94,12 @@ const AppProvider = ({ children }: Props) => {
       payload: result,
     });
     setShowModal(false);
-    updateLocalStorage(state);
   };
 
   // add new item to the grocery list and also to the cart
   const addNewItem = (item: IFoodItem) => {
     dispatch({ type: "ADD_NEW_ITEM", payload: item });
     addItemToCart(item);
-    updateLocalStorage(state);
   };
 
   // add shopping to local storage at start and update
@@ -121,33 +119,13 @@ const AppProvider = ({ children }: Props) => {
         type: "UPDATE_CURRENT_STATE",
         payload: oldState,
       });
-
-      // console.log("oldState", oldState.cart);
-
-      // let oldDate = new Date(oldState.cart.date);
-
-      // if (oldState && expiredDate({ oldDate, currentDate })) {
-      //   // if cart is 24 hrs old date not tch
-      //   // empty cart to shopping history and update local storage
-      //   dispatch({
-      //     type: "EMPTY_CART",
-      //     payload: oldState,
-      //   });
-      //   updateLocalStorage(state);
-      // } else {
-      //   // if cart is less than 24 hrs old
-      //   dispatch({
-      //     type: "UPDATE_CURRENT_STATE",
-      //     payload: oldState,
-      //   });
-      // }
     }
   }, []);
 
+  // updtae local storage every time cart item changes
   useEffect(() => {
-    // updtae local storage every time cart item changes
     updateLocalStorage(state);
-  }, [state.cart.items]);
+  }, [state]);
 
   return (
     <AppContext.Provider
