@@ -4,8 +4,11 @@ import { GiBackwardTime } from "react-icons/gi";
 import { AiOutlineBarChart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
+import useGlobalContext from "../../providers/AppProvider";
 
 const Navbar = () => {
+  const { state } = useGlobalContext();
+
   return (
     <div className="app__sidebar">
       <nav className="navbar">
@@ -13,9 +16,9 @@ const Navbar = () => {
           {/* logo goes here */}
 
           <div className="app__sidebar-logo">
-            <a href="#" className="navbar-brand">
+            <Link to="/" className="navbar-brand">
               <img src={logo} alt="logo" />
-            </a>
+            </Link>
           </div>
           {/* Nav items go here */}
           <div className="app__sidebar-nav">
@@ -40,7 +43,7 @@ const Navbar = () => {
 
           {/* cart items go here */}
           <div className="app__sidebar-cart">
-            <p className="item-num ">4</p>
+            <p className="item-num ">{state.cart.items.length}</p>
             <RiShoppingCart2Line className="cart-icon" />
           </div>
         </div>

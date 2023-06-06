@@ -12,12 +12,14 @@ interface Props {
   };
   showEdit: boolean;
   setShowEdit: (name: boolean) => void;
+  searchTerm: string;
 }
 
 const CartItmes = ({
   state: { cart, foodItems },
   showEdit,
   setShowEdit,
+  searchTerm,
 }: Props) => {
   const headingRef = useRef<HTMLHeadingElement>();
   const { itemStatusUpdate, changeCartName } = useGlobalContext();
@@ -96,7 +98,14 @@ const CartItmes = ({
             <div className="d-flex flex-column">
               {cartItemsByCategory[category].map(
                 (item: IFoodItem, idx: number) => (
-                  <div key={idx} className="d-flex align-items-center">
+                  <div
+                    key={idx}
+                    className={`d-flex align-items-center search-${
+                      searchTerm &&
+                      item.name.toLowerCase().match(searchTerm.toLowerCase()) &&
+                      "match"
+                    }`}
+                  >
                     {showEdit && (
                       <div className="position-relative input-holder">
                         <input

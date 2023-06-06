@@ -7,6 +7,7 @@ import CartItmes from "./CartItmes";
 import SearchForm from "../search/SearchForm";
 
 const Cart = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const { state, shoppingEnded, setShowAddItemForm, setShowModal } =
     useGlobalContext();
@@ -41,6 +42,7 @@ const Cart = () => {
         </div>
       ) : (
         <CartItmes
+          searchTerm={searchTerm}
           state={state}
           showEdit={showEdit}
           setShowEdit={setShowEdit}
@@ -58,7 +60,7 @@ const Cart = () => {
             </button>
           </div>
         ) : (
-          <SearchForm empty={emptyCart} />
+          <SearchForm {...{ searchTerm, setSearchTerm }} empty={emptyCart} />
         )}
       </div>
     </div>
