@@ -33,7 +33,7 @@ const CartItemDetail = ({ item, setShowItemDetail }: Props) => {
       </article>
       <button
         className="btn mt-3 add-btn"
-        onClick={(e) => {
+        onClick={(_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           addItemToCart(item);
           handleItemDetail();
         }}
