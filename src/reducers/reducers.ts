@@ -1,3 +1,4 @@
+import { ICart } from "./../types/types.d";
 const reducer = (
   state: any,
   // action: {
@@ -10,7 +11,10 @@ const reducer = (
   //     name?: string;
   //   };
   // }
-  action: any
+  action: {
+    type: string;
+    payload: any;
+  }
 ) => {
   const { type, payload } = action;
 
@@ -45,6 +49,7 @@ const reducer = (
         category: payload.category,
         pieces: "1",
         id: payload.id,
+        done: false,
       };
 
       const newCart = { ...state.cart, items: [...cartItems, newItem] };
@@ -84,6 +89,24 @@ const reducer = (
     return {
       ...state,
       cart: { ...oldCart, items: [...restItems] },
+    };
+  }
+
+  if (type === "CART_ITEM_STATUS") {
+    const { id, newStatus } = payload;
+    let oldCart = state.cart;
+
+    const itemToUpdate = oldCart.items.filter(
+      (item: ICart) => item.id === id
+    )[0];
+
+    const restItems = oldCart.items.filter((item: ICart) => item.id !== id);
+
+    itemToUpdate.done = newStatus;
+
+    return {
+      ...state,
+      cart: { ...oldCart, items: [...restItems, itemToUpdate] },
     };
   }
 

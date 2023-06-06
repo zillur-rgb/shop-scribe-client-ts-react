@@ -61,6 +61,11 @@ const AppProvider = ({ children }: Props) => {
     });
   };
 
+  const itemStatusUpdate = (id: number, newStatus: boolean) => {
+    // change item status complete to not with id
+    dispatch({ type: "CART_ITEM_STATUS", payload: { id, newStatus } });
+  };
+
   useEffect(() => {
     // add shopping to local storage at start
     if (!localStorage.getItem("shoppingList")) {
@@ -74,7 +79,7 @@ const AppProvider = ({ children }: Props) => {
         cart: ICart;
       } = JSON.parse(localStorage.getItem("shoppingList") as string);
 
-      console.log("oldState", oldState.cart);
+      // console.log("oldState", oldState.cart);
 
       let oldDate = new Date(oldState.cart.date);
 
@@ -110,6 +115,7 @@ const AppProvider = ({ children }: Props) => {
         addItemToCart,
         updateItemQuantity,
         removeCartItem,
+        itemStatusUpdate,
       }}
     >
       {children}

@@ -10,3 +10,23 @@
   width: 15rem;
   max-width: none;
 }
+/* cart items  */
+/* custom check box  */
+.cart-items input[type="checkbox"] + span {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--white);
+
+  border-radius: 5px;
+  border: 3px solid var(--bright-yellow);
+}
+
+.check-icon {
+  display: none;
+}
+
+.cart-items input[type="checkbox"]:checked + span .check-icon {
+  display: block;
+  color: var(--bright-yellow);
+}
