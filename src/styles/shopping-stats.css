@@ -36,3 +36,41 @@
   height: 100%;
   border-radius: 0.5rem;
 }
+
+@media screen and (max-width: 69.375rem) and (min-width: 955px) {
+  .recharts-wrapper {
+    width: 500px !important;
+  }
+}
+
+@media screen and (max-width: 47.5rem) {
+  .recharts-wrapper {
+    width: 550px !important;
+  }
+}
+
+@media screen and (max-width: 43.75rem) {
+  .recharts-wrapper {
+    width: 500px !important;
+  }
+}
+
+@media screen and (max-width: 39.0625rem) {
+  .recharts-wrapper {
+    width: 400px !important;
+  }
+}
+
+@media screen and (max-width: 32.8125rem) {
+  .recharts-wrapper {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .recharts-wrapper {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}

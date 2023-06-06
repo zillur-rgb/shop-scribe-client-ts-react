@@ -62,7 +62,7 @@ const ShoppingStats = () => {
           {itemsAndCategories.map((data) => {
             const { title, items, top3, customClass } = data;
             return (
-              <article className={`col-sm-6 ${customClass}`} key={title}>
+              <article className={`col-md-6 col-12 ${customClass}`} key={title}>
                 <h2>{title}</h2>
 
                 <ul>
@@ -94,17 +94,7 @@ const ShoppingStats = () => {
         <h2>Monthly Summary</h2>
 
         <div>
-          <LineChart
-            width={600}
-            height={400}
-            data={formattedGrocery}
-            margin={{
-              top: 10,
-              right: 10,
-              bottom: 10,
-              left: 10,
-            }}
-          >
+          <LineChart width={600} height={400} data={formattedGrocery}>
             <Line type={"monotone"} dataKey={"items"} stroke="#F9A109" />
 
             <CartesianGrid stroke="#E0E0E0" />

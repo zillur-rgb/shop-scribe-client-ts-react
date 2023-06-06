@@ -38,3 +38,9 @@ main > div {
     display: none;
   }
 }
+
+@media screen and (max-width: 43.75rem) {
+  .app__main-content {
+    padding: var(--padding-y) 1rem;
+  }
+}
