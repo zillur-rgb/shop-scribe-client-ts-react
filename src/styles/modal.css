@@ -1,0 +1,30 @@
+.app__modal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.app__modal .position-relative {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: max-content;
+  padding: 2rem;
+}
+
+.app__modal .position-absolute {
+  top: 2rem;
+  right: 2rem;
+}
+
+.app__modal h2 {
+  width: 85%;
+}
+
+.app__modal .btn-holder {
+  margin-left: auto;
+}

@@ -42,6 +42,9 @@ const AppProvider = ({ children }: Props) => {
   });
   const [showAddItemForm, setShowAddItemForm] = useState(false);
 
+  const [showModal, setShowModal] = useState<boolean>(false);
+  console.log("showModal", showModal);
+
   const updateLocalStorage = (state: {
     foodItems: IFoodItem[];
     foodHistory: IFoodHistory[];
@@ -90,6 +93,7 @@ const AppProvider = ({ children }: Props) => {
       type: "EMPTY_CART",
       payload: result,
     });
+    setShowModal(false);
     updateLocalStorage(state);
   };
 
@@ -160,6 +164,8 @@ const AppProvider = ({ children }: Props) => {
         showAddItemForm,
         setShowAddItemForm,
         addNewItem,
+        showModal,
+        setShowModal,
       }}
     >
       {children}
