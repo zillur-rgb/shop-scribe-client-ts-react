@@ -1,7 +1,7 @@
 .app__sidebar {
   padding: var(--padding-y) 0;
   width: 5%;
-  min-width: 90px;
+  min-width: 80px;
 }
 
 .navbar {

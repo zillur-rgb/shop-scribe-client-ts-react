@@ -5,12 +5,11 @@
   height: 85vh;
 }
 
-/**************************/
 /* cart header  */
 .cart-header {
   width: 100%;
   border-radius: 1rem;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   padding-left: 6rem;
   margin-bottom: 1.5rem;
   position: relative;
@@ -35,7 +34,6 @@
   border-radius: 0.5rem;
 }
 
-/**************************/
 /* empty cart no item  */
 .empty-cart-display {
   flex: 1;
@@ -54,7 +52,6 @@
   max-width: none;
 }
 
-/**************************/
 /* cart with items  */
 .main__cart-items {
   height: 70vh;
@@ -145,7 +142,6 @@
   scale: 1.1;
 }
 
-/**************************/
 /* cart footer  */
 .cart-footer {
   height: 15vh;

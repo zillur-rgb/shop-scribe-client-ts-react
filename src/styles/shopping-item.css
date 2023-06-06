@@ -1,6 +1,7 @@
 /* shopping items  */
 .main__content-items h1 {
   width: 70%;
+  margin-right: 1rem;
 }
 
 h1 span {
@@ -44,4 +45,14 @@ h1 span {
 .card .plus-icon:hover {
   color: var(--light-black);
   scale: 1.02;
+}
+
+@media screen and (max-width: 40.625rem) {
+  .main__content-items .items-header {
+    flex-direction: column;
+  }
+
+  .main__content-items h1 {
+    width: 100%;
+  }
 }

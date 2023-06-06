@@ -30,4 +30,11 @@ main > div {
 .app__main-sidebar {
   background: var(--very-light-orange);
   width: 30vw;
+  box-shadow: -1px 0 10px var(--very-light-orange);
+}
+
+@media screen and (max-width: 60rem) {
+  .app__main-sidebar {
+    display: none;
+  }
 }
