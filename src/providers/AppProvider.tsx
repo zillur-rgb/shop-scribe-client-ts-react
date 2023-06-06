@@ -93,6 +93,13 @@ const AppProvider = ({ children }: Props) => {
     updateLocalStorage(state);
   };
 
+  // add new item to the grocery list and also to the cart
+  const addNewItem = (item: IFoodItem) => {
+    dispatch({ type: "ADD_NEW_ITEM", payload: item });
+    addItemToCart(item);
+    updateLocalStorage(state);
+  };
+
   // add shopping to local storage at start and update
   useEffect(() => {
     if (!localStorage.getItem("shoppingList")) {
@@ -152,6 +159,7 @@ const AppProvider = ({ children }: Props) => {
         setShowItemDetail,
         showAddItemForm,
         setShowAddItemForm,
+        addNewItem,
       }}
     >
       {children}
