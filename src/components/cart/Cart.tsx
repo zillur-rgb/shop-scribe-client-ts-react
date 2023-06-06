@@ -25,7 +25,10 @@ const Cart = () => {
         <div className="cart-content order-2">
           <h2>Didn't find what you are looking for?</h2>
 
-          <button className="btn" onClick={() => setShowAddItemForm(true)}>
+          <button
+            className="btn bg-white"
+            onClick={() => setShowAddItemForm(true)}
+          >
             Add item
           </button>
         </div>
@@ -49,7 +52,7 @@ const Cart = () => {
         />
       )}
 
-      <div className="cart-footer mt-auto">
+      <div className="cart-footer mt-auto w-100">
         {showEdit ? (
           <div className="btn-holder d-flex">
             <button className="btn" onClick={() => setShowModal(true)}>

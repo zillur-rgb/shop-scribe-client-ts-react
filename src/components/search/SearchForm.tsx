@@ -23,7 +23,10 @@ const SearchForm = ({ empty, searchTerm, setSearchTerm }: Props) => {
   };
 
   return (
-    <form className={` cart-${empty} d-flex`} onSubmit={handleSubmitFind}>
+    <form
+      className={` cart-${empty && "empty"} d-flex`}
+      onSubmit={handleSubmitFind}
+    >
       <div>
         <label htmlFor="name" className="form-label visually-hidden">
           Password
@@ -40,8 +43,8 @@ const SearchForm = ({ empty, searchTerm, setSearchTerm }: Props) => {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        Submit
+      <button type="submit" className="btn">
+        Save
       </button>
     </form>
   );
