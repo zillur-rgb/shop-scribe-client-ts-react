@@ -42,8 +42,8 @@ Create my [Shoppingify](https://shoppingify.shop/) app. Use any front-end librar
 
 ### Links
 
-- Client Side Github Link: [coming](https://github.com/zillur-rgb/kanban-task-manager)
-- Live URL: [coming](https://kanban-board-react-ts.netlify.app/)
+- Client Side Github Link: [https://github.com/zillur-rgb/shop-scribe-client-ts-react](https://github.com/zillur-rgb/shop-scribe-client-ts-react)
+- Live URL: [https://shop-scribe-ts-react.netlify.app/](https://shop-scribe-ts-react.netlify.app/)
 
 ### Built with
 
