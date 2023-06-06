@@ -66,3 +66,19 @@
   background: var(--light-red);
   border-radius: 5px;
 }
+
+/* tool tip  */
+.nav-item {
+  position: relative;
+}
+
+/* .tooltip {
+  left: 4rem !important;
+  top: 0.5rem !important;
+}
+
+.tooltip .tooltip-arrow {
+  left: 1px !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) rotate(48deg) !important;
+} */

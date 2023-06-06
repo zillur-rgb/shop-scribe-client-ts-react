@@ -1,4 +1,9 @@
+import { toast } from "react-hot-toast";
+import toastStyles from "../utils/toastStyles";
 import { ICart } from "./../types/types.d";
+
+const { errorStyle, successStyle } = toastStyles;
+
 const reducer = (
   state: any,
   action: {
@@ -20,6 +25,12 @@ const reducer = (
     const currentDate = new Date();
     let oldCart = state.cart;
     oldCart.status = payload;
+
+    if (payload === "completed") {
+      toast(`Shopping Completed...`, { style: successStyle });
+    } else {
+      toast(`Shopping Cancelled!!!`, { style: errorStyle });
+    }
 
     const newState = {
       ...state,
@@ -50,6 +61,8 @@ const reducer = (
       };
 
       const newCart = { ...state.cart, items: [...cartItems, newItem] };
+
+      toast(`New item added to cart, ${payload.name}`, { style: successStyle });
       return {
         ...state,
         cart: newCart,
@@ -87,8 +100,7 @@ const reducer = (
       (item: { id: number }) => item.id !== payload
     );
 
-    // console.log("restItems", restItems, payload);
-
+    toast(`Item removed from cart`, { style: errorStyle });
     return {
       ...state,
       cart: {
@@ -129,10 +141,18 @@ const reducer = (
   }
 
   if (type === "ADD_NEW_ITEM") {
-    return {
-      ...state,
-      foodItems: [...state.foodItems, payload],
-    };
+    let duplicateItem = state.foodItems.filter(
+      (item: any) =>
+        item.name === payload.name && item.category === payload.category
+    );
+
+    if (duplicateItem.length === 0) {
+      toast("New Item Added", { style: successStyle });
+      return {
+        ...state,
+        foodItems: [...state.foodItems, payload],
+      };
+    }
   }
 
   return state;
