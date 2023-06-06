@@ -2,7 +2,7 @@ import { ICart, IFoodItem } from "../../types/types";
 import itemCategory from "../../utils/helpers/itemByCategory";
 import { HiCheck, HiPencil } from "react-icons/hi";
 import CartItemControl from "./CartItemControl";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import useGlobalContext from "../../providers/AppProvider";
 
 interface Props {
