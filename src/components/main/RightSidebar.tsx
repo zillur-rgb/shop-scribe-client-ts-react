@@ -1,10 +1,20 @@
+import useGlobalContext from "../../providers/AppProvider";
 import "../../styles/main.css";
-import Cart from "../cart/Cart";
+import AddItemForm from "../Navbar/AddItemForm";
+import CartItemDetail from "../Navbar/CartItemDetail";
 function RightSidebar() {
+  const { setShowItemDetail, showItemDetail } = useGlobalContext();
   return (
-    <div className="app__main-sidebar">
-      <Cart />
-    </div>
+    <>
+      {showItemDetail.show ? (
+        <CartItemDetail
+          item={showItemDetail?.item}
+          setShowItemDetail={setShowItemDetail}
+        />
+      ) : (
+        <AddItemForm />
+      )}
+    </>
   );
 }
 
