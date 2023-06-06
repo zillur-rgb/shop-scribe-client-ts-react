@@ -27,10 +27,7 @@ const ListHistory = ({ handleGroceryDetail }: Props) => {
           <p>{item}</p>
 
           {formattedGrocery[item].map((gItem) => (
-            <article
-              className="card flex-row justify-content-between"
-              key={gItem.id}
-            >
+            <article className="card justify-content-between" key={gItem.id}>
               <h2
                 onClick={(
                   _e: React.MouseEvent<HTMLHeadingElement, MouseEvent>

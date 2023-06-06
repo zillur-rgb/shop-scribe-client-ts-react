@@ -12,7 +12,10 @@
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
+
   align-items: center;
+
+  flex-direction: row;
 }
 
 .items-month h2 {
@@ -83,4 +86,51 @@
   color: var(--bright-yellow);
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+@media screen and (max-width: 40.625rem) {
+  /* list view  */
+  .items-month .card {
+    flex-direction: column;
+  }
+
+  .items-month .card h2 {
+    margin-bottom: 1rem;
+  }
+
+  .items-month .card h2 + div {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* detail view  */
+  .grocery-category + div {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 31.25rem) {
+  /* list view  */
+  .items-month .card h2 + div {
+    flex-wrap: wrap;
+  }
+
+  .items-month .card h2 + div > * {
+    margin: 0 !important;
+  }
+
+  .calendar-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 25rem) {
+  .forward-icon {
+    display: none;
+  }
+
+  .items-month .card h2 + div {
+    justify-content: center;
+    flex-direction: column;
+  }
 }
