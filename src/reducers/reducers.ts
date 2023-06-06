@@ -1,16 +1,6 @@
 import { ICart } from "./../types/types.d";
 const reducer = (
   state: any,
-  // action: {
-  //   type: string;
-  //   payload: {
-  //     foodItems: IFoodItem[];
-  //     foodHistory: IFoodHistory[];
-  //     cart: ICart;
-  //     id?: any;
-  //     name?: string;
-  //   };
-  // }
   action: {
     type: string;
     payload: any;
@@ -34,7 +24,6 @@ const reducer = (
     const newState = {
       ...state,
       foodHistory: [...state.foodHistory, oldCart],
-      oldCart,
       cart: {
         id: currentDate.getTime(),
         name: "Shopping List",
