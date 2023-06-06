@@ -16,7 +16,14 @@ const CartItemDetail = ({ item, setShowItemDetail }: Props) => {
   return (
     <div className="main__sidebar-details">
       <BackButton function1={handleItemDetail} />
-      {item?.name}
+      <article className="details-item d-flex flex-column">
+        <h3>{item?.name}</h3>
+        <p className="category">{item?.category}</p>
+        <p>{item?.description}</p>
+        <div className="order-1">
+          <img src={item?.image} alt={`${item?.name}`} />
+        </div>
+      </article>
     </div>
   );
 };

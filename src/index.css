@@ -66,8 +66,7 @@ body {
   font-family: var(--base-font), sans-serif;
   font-size: 18px;
 }
-
-h1,
+p h1,
 h2,
 h3,
 h4,
@@ -75,4 +74,12 @@ h5,
 h6 {
   color: var(--light-black);
   font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
