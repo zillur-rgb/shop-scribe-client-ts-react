@@ -53,6 +53,14 @@ const AppProvider = ({ children }: Props) => {
     dispatch({ type: "UPDATE_CART_QTY", payload: { id, qty } });
   };
 
+  const removeCartItem = (id: string | number) => {
+    // removes an item from the cart
+    dispatch({
+      type: "REMOVE_CART_ITEM",
+      payload: id,
+    });
+  };
+
   useEffect(() => {
     // add shopping to local storage at start
     if (!localStorage.getItem("shoppingList")) {
@@ -65,6 +73,8 @@ const AppProvider = ({ children }: Props) => {
         foodHistory: IFoodHistory[];
         cart: ICart;
       } = JSON.parse(localStorage.getItem("shoppingList") as string);
+
+      console.log("oldState", oldState.cart);
 
       let oldDate = new Date(oldState.cart.date);
 
@@ -91,12 +101,15 @@ const AppProvider = ({ children }: Props) => {
     updateLocalStorage(state);
   }, [state.cart.items]);
 
+  console.log("cart", state.cart);
+
   return (
     <AppContext.Provider
       value={{
         state,
         addItemToCart,
         updateItemQuantity,
+        removeCartItem,
       }}
     >
       {children}

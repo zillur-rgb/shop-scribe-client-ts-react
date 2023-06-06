@@ -9,7 +9,7 @@ type Props = {
 };
 
 const CartItemControl = ({ item, qtys }: Props) => {
-  const { updateItemQuantity } = useGlobalContext();
+  const { updateItemQuantity, removeCartItem } = useGlobalContext();
   const [showQtyControl, setShowQtyControl] = useState<boolean>(false);
 
   const handleQtyControl = (show: boolean) => setShowQtyControl(!show);
@@ -20,7 +20,12 @@ const CartItemControl = ({ item, qtys }: Props) => {
       {showQtyControl ? (
         <div className="bg-white d-flex align-items-center justify-content-between gap-1">
           <div>
-            <AiOutlineDelete className="delete-icon" />
+            <AiOutlineDelete
+              className="delete-icon"
+              onClick={(_e: any) => {
+                removeCartItem(item.id);
+              }}
+            />
           </div>
           <AiOutlineMinus
             onClick={(_e: any) => {

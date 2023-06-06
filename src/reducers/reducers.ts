@@ -15,7 +15,7 @@ const reducer = (
   const { type, payload } = action;
 
   if (type === "UPDATE_LOCAL_STORAGE") {
-    localStorage.setItem("shoppingList", JSON.stringify(state));
+    localStorage.setItem("shoppingList", JSON.stringify(payload));
   }
 
   if (type === "UPDATE_CURRENT_STATE") {
@@ -69,6 +69,21 @@ const reducer = (
     return {
       ...state,
       cart: { ...oldCart, items: [...restItems, itemToUpdate] },
+    };
+  }
+
+  if (type === "REMOVE_CART_ITEM") {
+    let oldCart = state.cart;
+
+    const restItems = state.cart.items.filter(
+      (item: { id: number }) => item.id !== payload
+    );
+
+    // console.log("restItems", restItems, payload);
+
+    return {
+      ...state,
+      cart: { ...oldCart, items: [...restItems] },
     };
   }
 
