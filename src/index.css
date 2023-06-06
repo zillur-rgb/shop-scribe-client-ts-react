@@ -87,3 +87,7 @@ h2 {
 h1 {
   margin-bottom: 1rem;
 }
+
+button.btn {
+  font-weight: 700;
+}

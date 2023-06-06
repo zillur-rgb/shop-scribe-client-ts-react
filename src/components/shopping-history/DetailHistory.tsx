@@ -1,5 +1,4 @@
 import itemCategory from "../../utils/helpers/itemByCategory";
-import { CgArrowLongLeft } from "react-icons/cg";
 import { BsCalendarRange } from "react-icons/bs";
 import { format } from "date-fns";
 import { IItems } from "../../types/types";
@@ -21,15 +20,13 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }: Props) => {
     <>
       <div className="main__items-grocery">
         <BackButton function1={handleGroceryDetail} />
-        <div className="grocery">
+        <div>
           <h2>{item.name}</h2>
 
-          <div className="d-flex align-items-center">
-            <BsCalendarRange className="calendar-icon" />
+          <div className="d-flex align-items-center grocery-date">
+            <BsCalendarRange className="calendar-icon me-2" />
 
-            <span className="grocery-date">
-              {format(new Date(item.date), "EEE d.M.yyy")}
-            </span>
+            <span>{format(new Date(item.date), "EEE d.M.yyy")}</span>
           </div>
 
           {Object.keys(itemToShow).map((item) => (
@@ -38,8 +35,12 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }: Props) => {
 
               <div className="d-flex gap-3">
                 {itemToShow[item].map((gItem: IItems) => (
-                  <div className="card flex-row" key={gItem.name}>
-                    <p className="grocery-qty">{gItem.pieces} pcs</p>
+                  <div
+                    className="card flex-row align-items-center"
+                    key={gItem.name}
+                  >
+                    <p className="grocery-name me-2">{gItem.name}</p>
+                    <p className="grocery-qty">{gItem.pieces}pcs</p>
                   </div>
                 ))}
               </div>

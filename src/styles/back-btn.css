@@ -1,0 +1,9 @@
+.back-btn {
+  color: var(--bright-yellow);
+  transition: all 0.3s linear;
+}
+
+.back-btn:hover {
+  color: var(--bright-yellow);
+  text-decoration: underline;
+}

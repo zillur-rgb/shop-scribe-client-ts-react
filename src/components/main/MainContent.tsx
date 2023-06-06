@@ -9,7 +9,7 @@ function MainContent() {
       <Routes>
         <Route path="/" element={<ShoppingItem />} />
         <Route path="/history" element={<ShoppingHistory />} />
-        <Route path="/stats" element={<ShoppingStats />} />
+        <Route path="/stat" element={<ShoppingStats />} />
       </Routes>
     </div>
   );
