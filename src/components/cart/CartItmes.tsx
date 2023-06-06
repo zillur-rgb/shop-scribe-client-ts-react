@@ -10,15 +10,20 @@ interface Props {
     cart: ICart;
     foodItems: IFoodItem[];
   };
+  showEdit: boolean;
+  setShowEdit: (name: boolean) => void;
 }
 
-const CartItmes = ({ state: { cart, foodItems } }: Props) => {
-  const [showEdit, setShowEdit] = useState<boolean>(false);
+const CartItmes = ({
+  state: { cart, foodItems },
+  showEdit,
+  setShowEdit,
+}: Props) => {
   const headingRef = useRef<HTMLHeadingElement>();
-  const { itemStatusUpdate } = useGlobalContext();
+  const { itemStatusUpdate, changeCartName } = useGlobalContext();
 
+  // Filter all items to get cart items
   const getCartItem = () => {
-    // Filter all items to get cart items
     const allItemsId = cart?.items.map((item) => item.id);
 
     let cartItemToShow = foodItems.filter((item) =>
@@ -27,8 +32,8 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
     return cartItemToShow;
   };
 
+  // return object of items with id as key and quantity as value
   const mapItemToQty = () => {
-    // return object of items with id as key and quantity as value
     const cartItemQtys: any = {};
     for (let item of cart.items) {
       cartItemQtys[item.id] = item.pieces;
@@ -36,8 +41,8 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
     return cartItemQtys;
   };
 
+  // return object of items with id as key and status as value
   const mapItemToStatus = () => {
-    // return object of items with id as key and status as value
     const cartItemStatus: { [key: number]: boolean } = {};
     for (let item of cart.items) {
       cartItemStatus[item.id] = item.done;
@@ -63,11 +68,18 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
     }
   }, [showEdit]);
 
+  useEffect(() => {
+    const newCartName = headingRef.current?.innerText;
+    if (newCartName !== cart.name) {
+      changeCartName(newCartName);
+    }
+  }, []);
+
   return (
     <section className="main__cart-items w-100">
       <div className="cart-title d-flex align-items-center">
         <h2 className="me-1" ref={headingRef as RefObject<HTMLHeadingElement>}>
-          Shopping List
+          {cart.name}
         </h2>
         <span>
           <HiPencil
@@ -96,7 +108,11 @@ const CartItmes = ({ state: { cart, foodItems } }: Props) => {
                       />
 
                       <span className="fake-input">
-                        <HiCheck className="check-icon" />
+                        <HiCheck
+                          className={`check-icon ${
+                            cartItemStatus[item.id] ? "d-block" : "d-none"
+                          }`}
+                        />
                       </span>
                     </div>
                   )}

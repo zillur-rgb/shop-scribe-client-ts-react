@@ -3,7 +3,6 @@ import { ICart, IFoodHistory, IFoodItem } from "../types/types";
 import foodItems from "../utils/constant/foodItems";
 import foodHistory from "../utils/constant/foodHistory";
 import reducer from "../reducers/reducers";
-import expiredDate from "../utils/helpers/expiredDate";
 interface Props {
   children: React.ReactNode;
 }
@@ -66,8 +65,25 @@ const AppProvider = ({ children }: Props) => {
     dispatch({ type: "CART_ITEM_STATUS", payload: { id, newStatus } });
   };
 
+  // change cart name
+  const changeCartName = (name: string) => {
+    dispatch({
+      type: "CART_NAME_UPDATE",
+      payload: name,
+    });
+    updateLocalStorage(state);
+  };
+  // after shopping ended update status and empty cart
+  const shoppingEnded = (result: string) => {
+    dispatch({
+      type: "EMPTY_CART",
+      payload: result,
+    });
+    updateLocalStorage(state);
+  };
+
+  // add shopping to local storage at start and update
   useEffect(() => {
-    // add shopping to local storage at start
     if (!localStorage.getItem("shoppingList")) {
       // If there is no shopping list on local storage
       updateLocalStorage(state);
@@ -79,25 +95,30 @@ const AppProvider = ({ children }: Props) => {
         cart: ICart;
       } = JSON.parse(localStorage.getItem("shoppingList") as string);
 
+      dispatch({
+        type: "UPDATE_CURRENT_STATE",
+        payload: oldState,
+      });
+
       // console.log("oldState", oldState.cart);
 
-      let oldDate = new Date(oldState.cart.date);
+      // let oldDate = new Date(oldState.cart.date);
 
-      if (oldState && expiredDate({ oldDate, currentDate })) {
-        // if cart is 24 hrs old date not tch
-        // empty cart to shopping history and update local storage
-        dispatch({
-          type: "EMPTY_CART",
-          payload: oldState,
-        });
-        updateLocalStorage(state);
-      } else {
-        // if cart is less than 24 hrs old
-        dispatch({
-          type: "UPDATE_CURRENT_STATE",
-          payload: oldState,
-        });
-      }
+      // if (oldState && expiredDate({ oldDate, currentDate })) {
+      //   // if cart is 24 hrs old date not tch
+      //   // empty cart to shopping history and update local storage
+      //   dispatch({
+      //     type: "EMPTY_CART",
+      //     payload: oldState,
+      //   });
+      //   updateLocalStorage(state);
+      // } else {
+      //   // if cart is less than 24 hrs old
+      //   dispatch({
+      //     type: "UPDATE_CURRENT_STATE",
+      //     payload: oldState,
+      //   });
+      // }
     }
   }, []);
 
@@ -105,8 +126,6 @@ const AppProvider = ({ children }: Props) => {
     // updtae local storage every time cart item changes
     updateLocalStorage(state);
   }, [state.cart.items]);
-
-  console.log("cart", state.cart);
 
   return (
     <AppContext.Provider
@@ -116,6 +135,8 @@ const AppProvider = ({ children }: Props) => {
         updateItemQuantity,
         removeCartItem,
         itemStatusUpdate,
+        shoppingEnded,
+        changeCartName,
       }}
     >
       {children}

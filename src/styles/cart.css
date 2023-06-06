@@ -1,3 +1,12 @@
+.main__cart-items {
+  height: 100%;
+  overflow: scroll;
+}
+
+.main__cart-items::-webkit-scrollbar {
+  display: none;
+}
+
 .empty-cart-display {
   flex: 1;
   display: flex;
@@ -10,6 +19,7 @@
   width: 15rem;
   max-width: none;
 }
+
 /* cart items  */
 /* custom check box  */
 .cart-items input[type="checkbox"] + span {
@@ -23,10 +33,5 @@
 }
 
 .check-icon {
-  display: none;
-}
-
-.cart-items input[type="checkbox"]:checked + span .check-icon {
-  display: block;
   color: var(--bright-yellow);
 }

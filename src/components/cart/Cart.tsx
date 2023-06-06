@@ -4,9 +4,11 @@ import SearchForm from "../search/SearchForm";
 import "../../styles/cart.css";
 import useGlobalContext from "../../providers/AppProvider";
 import CartItmes from "./CartItmes";
+import { useState } from "react";
 
 const Cart = () => {
-  const { state } = useGlobalContext();
+  const [showEdit, setShowEdit] = useState<boolean>(false);
+  const { state, shoppingEnded } = useGlobalContext();
   const emptyCart = state?.cart?.items?.length === 0;
   return (
     <section className="main__sidebar-cart h-100">
@@ -27,11 +29,33 @@ const Cart = () => {
             <img src={cart} alt="cart" className="position-absolute" />
           </div>
         ) : (
-          <CartItmes state={state} />
+          <CartItmes
+            state={state}
+            showEdit={showEdit}
+            setShowEdit={setShowEdit}
+          />
         )}
 
         <div className="cart-footer mt-auto">
-          <SearchForm empty={emptyCart} />
+          {showEdit ? (
+            <div className="btn-holder d-flex">
+              <button
+                className="btn"
+                onClick={() => shoppingEnded("cancelled")}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="btn"
+                onClick={() => shoppingEnded("completed")}
+              >
+                Complete
+              </button>
+            </div>
+          ) : (
+            <SearchForm empty={emptyCart} />
+          )}
         </div>
       </div>
     </section>
