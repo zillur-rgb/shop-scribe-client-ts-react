@@ -12,10 +12,12 @@
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
 .items-month h2 {
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .items-month h2 + .d-flex {

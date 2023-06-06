@@ -31,9 +31,11 @@ const ShoppingHistory = () => {
 
   return (
     <div className="main__content-history">
-      <div>
-        <h1>Shopping history</h1>
-      </div>
+      {!showGroceryDetail?.show && (
+        <div>
+          <h1>Shopping history</h1>
+        </div>
+      )}
 
       <div className="main__history-view">
         {!showGroceryDetail?.show ? (

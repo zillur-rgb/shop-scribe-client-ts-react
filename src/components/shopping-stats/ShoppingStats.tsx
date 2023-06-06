@@ -10,6 +10,8 @@ import {
 import { getTopItemAndCategory } from "../../utils/helpers/getTopItem";
 import { formatMonthlyData } from "../../utils/helpers/formatMonthylData";
 import useGlobalContext from "../../providers/AppProvider";
+import { useEffect } from "react";
+import "../../styles/shopping-stats.css";
 
 const ShoppingStats = () => {
   const {
@@ -39,6 +41,20 @@ const ShoppingStats = () => {
   ];
 
   const formattedGrocery = formatMonthlyData(foodHistory);
+
+  // show progress bar according to percent
+  const showProgressBar = () => {
+    const progressToShow = document.querySelectorAll(".progress-show");
+
+    for (let progress of progressToShow) {
+      const percent = progress.classList[2].split("-")[1];
+      (progress as HTMLElement).style.width = `${percent}%`;
+    }
+  };
+
+  useEffect(() => {
+    showProgressBar();
+  }, []);
   return (
     <div className="main__content-stats">
       <div className="container">
@@ -53,12 +69,17 @@ const ShoppingStats = () => {
                   {top3.map((item) => {
                     let percent = getPercent(items[item], totalItem);
                     return (
-                      <li key={item} className="d-flex justify-content-between">
+                      <li
+                        key={item}
+                        className="d-flex justify-content-between flex-wrap"
+                      >
                         <span>{item}</span>
                         <span>{percent}%</span>
-                        <span
-                          className={`w-100 d-block progress-bar progress-${percent}`}
-                        ></span>
+                        <div className="progress-bar w-100">
+                          <span
+                            className={`d-block progress-show progress-${percent}`}
+                          ></span>
+                        </div>
                       </li>
                     );
                   })}

@@ -8,6 +8,10 @@ h1 span {
   font-weight: 700;
 }
 
+.mag-icon {
+  color: var(--light-black);
+}
+
 /* items  */
 .items-show h2 {
   font-size: 1rem;

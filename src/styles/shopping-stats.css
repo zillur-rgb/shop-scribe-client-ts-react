@@ -1,0 +1,38 @@
+/* shopping stats  */
+.main__content-stats h2 {
+  margin-bottom: 2rem;
+}
+
+.main__content-stats section {
+  margin-top: 3rem;
+}
+
+.main__content-stats span {
+  font-size: 0.95rem;
+}
+
+.main__content-stats .progress-bar {
+  height: 5px;
+  background: var(--ver-light-red);
+
+  margin: 0.5rem 0 1rem;
+  border-radius: 0.5rem;
+
+  position: relative;
+}
+
+.top-items .progress-show {
+  background-color: var(--bright-yellow);
+}
+
+.top-cat .progress-show {
+  background-color: var(--blue);
+}
+
+.progress-bar .progress-show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 0.5rem;
+}
