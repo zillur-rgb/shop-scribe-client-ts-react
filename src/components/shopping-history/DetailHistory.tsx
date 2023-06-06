@@ -3,6 +3,7 @@ import { CgArrowLongLeft } from "react-icons/cg";
 import { BsCalendarRange } from "react-icons/bs";
 import { format } from "date-fns";
 import { IItems } from "../../types/types";
+import BackButton from "../main/BackButton";
 
 interface Props {
   showGroceryDetail: any;
@@ -19,13 +20,7 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }: Props) => {
   return (
     <>
       <div className="main__items-grocery">
-        <button
-          onClick={handleGroceryDetail}
-          className="d-flex align-items-center"
-        >
-          <CgArrowLongLeft className="back-icon me-1" /> back
-        </button>
-
+        <BackButton function1={handleGroceryDetail} />
         <div className="grocery">
           <h2>{item.name}</h2>
 
