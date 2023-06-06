@@ -21,36 +21,38 @@ const Cart = () => {
 
   return (
     <div className="main__sidebar-cart d-flex flex-column align-items-center h-100">
-      <div className="cart-header d-flex">
-        <div className="cart-content order-2">
-          <h2>Didn't find what you are looking for?</h2>
+      <div className="cart-padding w-100 d-flex flex-column align-items-center">
+        <div className="cart-header d-flex">
+          <div className="cart-content order-2">
+            <h2>Didn't find what you are looking for?</h2>
 
-          <button
-            className="btn bg-white"
-            onClick={() => setShowAddItemForm(true)}
-          >
-            Add item
-          </button>
+            <button
+              className="btn bg-white"
+              onClick={() => setShowAddItemForm(true)}
+            >
+              Add item
+            </button>
+          </div>
+
+          <div className="cart-image">
+            <img src={bottle} alt="bottle" />
+          </div>
         </div>
 
-        <div className="cart-image">
-          <img src={bottle} alt="bottle" />
-        </div>
+        {emptyCart ? (
+          <div className="empty-cart-display position-relative">
+            <span>No items!!!</span>
+            <img src={cart} alt="cart" className="position-absolute" />
+          </div>
+        ) : (
+          <CartItmes
+            searchTerm={searchTerm}
+            state={state}
+            showEdit={showEdit}
+            setShowEdit={setShowEdit}
+          />
+        )}
       </div>
-
-      {emptyCart ? (
-        <div className="empty-cart-display position-relative">
-          <span>No items!!!</span>
-          <img src={cart} alt="cart" className="position-absolute" />
-        </div>
-      ) : (
-        <CartItmes
-          searchTerm={searchTerm}
-          state={state}
-          showEdit={showEdit}
-          setShowEdit={setShowEdit}
-        />
-      )}
 
       <div className="cart-footer mt-auto w-100">
         {showEdit ? (

@@ -12,7 +12,6 @@ main > div {
 .app__main-sidebar {
   height: 100vh;
   overflow: scroll;
-  padding: var(--padding-y) var(--padding-x);
 }
 
 /* hide scroll bar for elements  */

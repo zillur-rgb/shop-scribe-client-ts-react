@@ -1,4 +1,8 @@
 /* cart  */
+.cart-padding {
+  padding: var(--padding-y) var(--padding-x);
+  flex: 1;
+}
 
 /* cart header  */
 .cart-header {
@@ -106,4 +110,24 @@
 
 .cart-footer form.cart-empty .btn {
   background-color: var(--light-gray);
+}
+
+/* cart footer edit mode  */
+.cart-footer {
+  background-color: var(--white);
+  padding: 2rem;
+}
+
+.cart-footer .btn-holder {
+  justify-content: center;
+}
+
+.cart-footer .btn-holder .btn:first-child {
+  color: var(--light-black);
+  border: 1px solid transparent;
+}
+
+.cart-footer .btn-holder .btn:first-child:hover {
+  color: var(--light-black);
+  border: 1px solid var(--light-black);
 }
