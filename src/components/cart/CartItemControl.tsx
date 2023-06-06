@@ -19,15 +19,16 @@ const CartItemControl = ({ item, qtys }: Props) => {
     <div className="cart__item-control ms-auto">
       {showQtyControl ? (
         <div className="bg-white d-flex align-items-center justify-content-between gap-1">
-          <div>
-            <AiOutlineDelete
-              className="delete-icon"
-              onClick={(_e: any) => {
-                removeCartItem(item.id);
-              }}
-            />
+          <div
+            className="delete-btn"
+            onClick={(_e: any) => {
+              removeCartItem(item.id);
+            }}
+          >
+            <AiOutlineDelete className="delete-icon" />
           </div>
           <AiOutlineMinus
+            className="minus-icon"
             onClick={(_e: any) => {
               if (Number(qty) > 1) {
                 updateItemQuantity({
@@ -40,6 +41,7 @@ const CartItemControl = ({ item, qtys }: Props) => {
 
           <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />
           <AiOutlinePlus
+            className="plus-icon"
             onClick={(_e: any) => {
               updateItemQuantity({
                 id: item.id,
@@ -66,6 +68,7 @@ const ControlButton = ({
 }) => {
   return (
     <button
+      className="btn"
       onClick={(_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
         handleQtyControl(showQtyControl)
       }
