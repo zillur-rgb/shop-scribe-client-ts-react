@@ -1,4 +1,4 @@
-import { compareDesc, format } from "date-fns";
+import { compareDesc, format, isBefore } from "date-fns";
 import { IFoodHistory } from "../../types/types";
 
 const groceryByMonth = (foodHistory: IFoodHistory[]) => {
@@ -23,21 +23,27 @@ const groceryByMonth = (foodHistory: IFoodHistory[]) => {
     const timeFormat = format(item.date, "LLLL yyyy");
 
     if (formattedGrocery.hasOwnProperty(timeFormat)) {
-      formattedGrocery[timeFormat].push(item);
+      let put: boolean = false;
+      let groceryItems = formattedGrocery[timeFormat];
+
+      for (let ind in groceryItems) {
+        if (isBefore(new Date(groceryItems[ind].date), new Date(item.date))) {
+          formattedGrocery[timeFormat] = [
+            ...groceryItems.slice(0, parseInt(ind)),
+            item,
+            ...groceryItems.slice(parseInt(ind)),
+          ];
+          put = true;
+          break;
+        }
+        if (!put) {
+          formattedGrocery[timeFormat].push(item);
+        }
+      }
     } else {
       formattedGrocery[timeFormat] = [item];
     }
   }
-
-  // foodHistory.forEach((item) => {
-  //   const timeline = format(item.date, "LLLL yyyy");
-
-  //   if (formattedGrocery.hasOwnProperty(timeline)) {
-  //     formattedGrocery[timeline].push(item);
-  //   } else {
-  //     formattedGrocery[timeline] = [item];
-  //   }
-  // });
 
   return { formattedGrocery, sortedTimeline };
 };
