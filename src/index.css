@@ -56,13 +56,16 @@ h6 {
   --blue: #56ccf2;
   --light-gray: #c1c1c4;
   --white: #ffffff;
-  --very-light-red: #E0E0E0;
-  --dark-brown: #80485B;
-  --black: #000000
+  --ver-light-red: #e0e0e0;
+
+  --black: #000000;
+  --gray: #828282;
   /* white button text  */
   --light-black: #34333a;
   /* right sidebar background  */
   --very-light-orange: #fff0de;
+  --dark-brown: #80485b;
+
   --padding-y: 2rem;
   --padding-x: 2rem;
 }
@@ -70,14 +73,16 @@ h6 {
 body {
   font-family: var(--base-font), sans-serif;
   font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
 }
-p h1,
+
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: var(--light-black);
   font-weight: 600;
 }
 
@@ -88,6 +93,7 @@ h2 {
 
 h1 {
   margin-bottom: 1rem;
+  color: var(--light-black);
 }
 
 button.btn {

@@ -79,7 +79,7 @@ const CartItmes = ({
 
   return (
     <section className="main__cart-items w-100">
-      <div className="cart-title d-flex align-items-center">
+      <div className="cart-title d-flex align-items-center justify-content-between mt-1">
         <h2 className="me-1" ref={headingRef as RefObject<HTMLHeadingElement>}>
           {cart.name}
         </h2>
@@ -100,14 +100,15 @@ const CartItmes = ({
                 (item: IFoodItem, idx: number) => (
                   <div
                     key={idx}
-                    className={`d-flex align-items-center search-${
-                      searchTerm &&
-                      item.name.toLowerCase().match(searchTerm.toLowerCase()) &&
-                      "match"
-                    }`}
+                    className={`mb-3 d-flex align-items-center 
+                  search-${
+                    searchTerm &&
+                    item.name.toLowerCase().match(searchTerm.toLowerCase()) &&
+                    "match"
+                  }`}
                   >
                     {showEdit && (
-                      <div className="position-relative input-holder">
+                      <div className="position-relative input-holder me-3">
                         <input
                           type="checkbox"
                           id={`done-${item.id}`}
