@@ -15,8 +15,10 @@ export const formatMonthlyData = (foodHistory: any) => {
     let monthItems = 0;
 
     for (let g of grocery[time]) {
-      for (let item of g.items) {
-        monthItems += item.pieces as number;
+      if (g.status === "completed") {
+        for (let item of g.items) {
+          monthItems += item.pieces as number;
+        }
       }
     }
 

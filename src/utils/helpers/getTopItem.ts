@@ -8,24 +8,26 @@ export const getTopItemAndCategory = (foodItems: IFoodHistory[]) => {
   let totalItem = 0;
 
   for (let food of foodItems) {
-    for (let item of food.items) {
-      item.pieces = Number(item.pieces);
-      const { category, name, pieces } = item;
+    if (food.status === "completed") {
+      for (let item of food.items) {
+        item.pieces = Number(item.pieces);
+        const { category, name, pieces } = item;
 
-      // items
-      if (items.hasOwnProperty(name)) {
-        items[name] += pieces;
-      } else {
-        items[name] = pieces || 1;
-      }
+        // items
+        if (items.hasOwnProperty(name)) {
+          items[name] += pieces;
+        } else {
+          items[name] = pieces || 1;
+        }
 
-      // categories
-      if (categories.hasOwnProperty(category)) {
-        categories[category] += pieces;
-      } else {
-        categories[category] = pieces || 1;
+        // categories
+        if (categories.hasOwnProperty(category)) {
+          categories[category] += pieces;
+        } else {
+          categories[category] = pieces || 1;
+        }
+        totalItem += pieces;
       }
-      totalItem += pieces;
     }
   }
 
