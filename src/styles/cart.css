@@ -200,15 +200,6 @@
   padding: 0.5rem 1rem;
 }
 
-.cart-footer .btn-holder .btn:first-child {
-  color: var(--light-black);
-  border: 1px solid transparent;
-}
-
-.cart-footer .btn-holder .btn:first-child:hover {
-  border: 1px solid var(--light-black);
-}
-
 .cart-footer .btn-holder .btn:last-child {
   color: var(--white);
   background-color: var(--blue);

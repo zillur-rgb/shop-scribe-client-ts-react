@@ -57,7 +57,10 @@ const Cart = () => {
       <div className="cart-footer mt-auto w-100">
         {showEdit ? (
           <div className="btn-holder d-flex">
-            <button className="btn" onClick={() => setShowModal(true)}>
+            <button
+              className="btn cancel-btn"
+              onClick={() => setShowModal(true)}
+            >
               Cancel
             </button>
             <button className="btn" onClick={() => shoppingEnded("completed")}>

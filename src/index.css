@@ -98,4 +98,15 @@ h1 {
 
 button.btn {
   font-weight: 700;
+  transition: all 0.3s linear;
+}
+
+/* cancel button on form and cart item  */
+.cancel-btn {
+  color: var(--light-black);
+  border: 1px solid transparent;
+}
+
+.cancel-btn:hover {
+  border: 1px solid var(--light-black);
 }

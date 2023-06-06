@@ -52,7 +52,7 @@ const AddItemForm = () => {
   };
   return (
     <div className="main__sidebar-form">
-      <h2>Add a new item</h2>
+      <h2 className="mb-4">Add a new item</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -92,6 +92,7 @@ const AddItemForm = () => {
           />
         </div>
 
+        <label htmlFor="category">Category</label>
         <select className="form-select mb-3" ref={categoryRef}>
           <option value="">Enter a category</option>
           {categories.map((item) => (
@@ -105,7 +106,7 @@ const AddItemForm = () => {
           <button onClick={handleForm} className="btn cancel-btn">
             cancel
           </button>
-          <button type="submit" className="btn">
+          <button type="submit" className="btn save-btn">
             Save
           </button>
         </div>
