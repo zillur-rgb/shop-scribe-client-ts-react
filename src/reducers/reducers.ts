@@ -61,7 +61,10 @@ const reducer = (
       };
 
       const newCart = { ...state.cart, items: [...cartItems, newItem] };
-      return { ...state, cart: newCart };
+      return {
+        ...state,
+        cart: newCart,
+      };
     }
   }
 
@@ -81,7 +84,10 @@ const reducer = (
 
     return {
       ...state,
-      cart: { ...oldCart, items: [...restItems, itemToUpdate] },
+      cart: {
+        ...oldCart,
+        items: [...restItems, itemToUpdate],
+      },
     };
   }
 
@@ -96,7 +102,10 @@ const reducer = (
 
     return {
       ...state,
-      cart: { ...oldCart, items: [...restItems] },
+      cart: {
+        ...oldCart,
+        items: [...restItems],
+      },
     };
   }
 
@@ -114,14 +123,20 @@ const reducer = (
 
     return {
       ...state,
-      cart: { ...oldCart, items: [...restItems, itemToUpdate] },
+      cart: {
+        ...oldCart,
+        items: [...restItems, itemToUpdate],
+      },
     };
   }
 
   if (type === "CART_NAME_UPDATE") {
     const oldCart = state.cart;
     oldCart.name = payload;
-    return { ...state, cart: oldCart };
+    return {
+      ...state,
+      cart: oldCart,
+    };
   }
 
   if (type === "ADD_NEW_ITEM") {
